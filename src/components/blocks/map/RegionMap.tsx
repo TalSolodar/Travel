@@ -7,9 +7,7 @@ import { createPortal } from 'react-dom'
 import { loadGeo, type GeoKey } from '../../../data/geo'
 import type { MapPlace, MapRegion } from '../../../types/guide'
 import { RegionCard } from './RegionCard'
-
-/** Free vector basemap: no API key, commercial use allowed. https://openfreemap.org */
-const STYLE_URL = 'https://tiles.openfreemap.org/styles/positron'
+import { MAP_STYLE_URL } from './style'
 
 /** Basemap label layers we keep, shown in Hebrew where available. Everything else is hidden. */
 const KEEP_LABELS = /^(label_country|water_name)/
@@ -64,7 +62,7 @@ export default function RegionMap({
 
       map = new maplibregl.Map({
         container: containerRef.current,
-        style: STYLE_URL,
+        style: MAP_STYLE_URL,
         bounds,
         fitBoundsOptions: { padding: fitPadding(latest.current.showCards) },
         attributionControl: { compact: true },
@@ -83,7 +81,9 @@ export default function RegionMap({
         map?.fitBounds(bounds, { padding: fitPadding(latest.current.showCards), animate: false }),
       )
 
-      map.on('load', () => {
+      // 'style.load' fires once the style is parsed, before any basemap tiles arrive, so the
+      // regions and pins (local data) show right away instead of waiting for the whole basemap.
+      map.once('style.load', () => {
         if (!map) return
         localizeBasemap(map, countryCode)
         addRegionLayers(map, data, regions)

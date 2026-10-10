@@ -1,12 +1,15 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
+import { loadGeo } from '../../data/geo'
 import type { MapBlock as MapBlockData, MapRegion } from '../../types/guide'
+import { MAP_STYLE_URL } from './map/style'
 import { Card } from '../ui/Card'
 import { Icon } from '../ui/Icon'
 import { RichText } from '../ui/RichText'
 import { RegionCard } from './map/RegionCard'
 
 // MapLibre is large, so it loads only when a map is actually on screen.
-const RegionMap = lazy(() => import('./map/RegionMap'))
+const loadRegionMap = () => import('./map/RegionMap')
+const RegionMap = lazy(loadRegionMap)
 
 /** At or above this width every card floats beside its pin; below it, only the active card shows, overlaid on the map. */
 const WIDE_MIN = 640
@@ -15,6 +18,13 @@ export function MapBlock({ block }: { block: MapBlockData }) {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const [wide, setWide] = useState(true)
   const [activeId, setActiveId] = useState<string | null>(null)
+
+  // Fetch the map code, region shapes and map style in parallel rather than one after another.
+  useEffect(() => {
+    loadRegionMap()
+    loadGeo(block.geo)
+    fetch(MAP_STYLE_URL).catch(() => {})
+  }, [block.geo])
 
   useEffect(() => {
     const el = wrapperRef.current
