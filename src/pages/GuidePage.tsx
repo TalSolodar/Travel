@@ -1,0 +1,66 @@
+import { useEffect } from 'react'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
+import { BlockList } from '../components/blocks/BlockRenderer'
+import { MobileBar } from '../components/layout/MobileBar'
+import { Sidebar } from '../components/layout/Sidebar'
+import { StepHero } from '../components/layout/StepHero'
+import { StepPager } from '../components/layout/StepPager'
+import { Icon } from '../components/ui/Icon'
+import { getGuide } from '../data/guides'
+import { strings } from '../lib/strings'
+import { themeStyle } from '../lib/themes'
+import { NotFoundPage } from './NotFoundPage'
+
+export function GuidePage() {
+  const { guideSlug, stepId } = useParams()
+  const navigate = useNavigate()
+  const guide = getGuide(guideSlug)
+  const activeIndex = guide ? guide.steps.findIndex((s) => s.id === stepId) : -1
+  const step = guide?.steps[activeIndex]
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 })
+    if (guide && step) document.title = `${step.title} | ${guide.title}`
+  }, [guide, step])
+
+  // Arrow-key navigation. In RTL, "left" means forward.
+  useEffect(() => {
+    if (!guide || activeIndex < 0) return
+    const onKey = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement
+      if (e.altKey || e.ctrlKey || e.metaKey || target.closest('input, textarea, [contenteditable], [role="tablist"]')) return
+      const delta = e.key === 'ArrowLeft' ? 1 : e.key === 'ArrowRight' ? -1 : 0
+      const dest = guide.steps[activeIndex + delta]
+      if (delta && dest) navigate(`/${guide.slug}/${dest.id}`)
+    }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [guide, activeIndex, navigate])
+
+  if (!guide) return <NotFoundPage />
+  if (!step) return <Navigate to={`/${guide.slug}/${guide.steps[0].id}`} replace />
+
+  return (
+    <div style={themeStyle(guide.theme)} className="min-h-dvh bg-slate-50 lg:flex">
+      <Sidebar guide={guide} activeIndex={activeIndex} />
+
+      <div className="min-w-0 flex-1">
+        <MobileBar guide={guide} activeIndex={activeIndex} />
+
+        <main className="mx-auto max-w-3xl px-4 py-6 md:px-8 md:py-10">
+          <article key={step.id} className="animate-fade-in">
+            <StepHero step={step} index={activeIndex} />
+            <BlockList blocks={step.blocks} />
+          </article>
+
+          <StepPager guide={guide} activeIndex={activeIndex} />
+
+          <footer className="mt-10 flex items-start justify-center gap-1.5 text-center text-xs text-slate-400">
+            <Icon name="heart" size={13} className="mt-0.5 shrink-0 text-rose-400" />
+            {guide.disclaimer ?? strings.defaultDisclaimer}
+          </footer>
+        </main>
+      </div>
+    </div>
+  )
+}

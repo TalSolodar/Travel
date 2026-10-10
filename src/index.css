@@ -1,0 +1,66 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Heebo', system-ui, sans-serif;
+
+  /* Default brand palette; each guide can override it via `theme`. */
+  --color-brand-50: #ecfdf5;
+  --color-brand-100: #d1fae5;
+  --color-brand-200: #a7f3d0;
+  --color-brand-500: #10b981;
+  --color-brand-600: #059669;
+  --color-brand-700: #047857;
+  --color-brand-900: #064e3b;
+
+  --animate-fade-in: fade-in 0.35s ease-out both;
+  --animate-slide-in: slide-in 0.25s ease-out both;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-50 font-sans text-slate-800 antialiased;
+  }
+}
+
+/* MapLibre's stylesheet sets Helvetica/Arial on the map; use the site font for pins and cards. */
+.maplibregl-map {
+  font-family: var(--font-sans);
+}
+
+/* Region map tooltip cards: the card component draws its own box. */
+.region-popup .maplibregl-popup-content {
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.region-popup .maplibregl-popup-tip {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
