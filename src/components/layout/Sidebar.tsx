@@ -21,7 +21,7 @@ export function Sidebar({ guide, activeIndex }: SidebarProps) {
             to="/"
             className="mb-4 inline-flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-brand-700"
           >
-            <Icon name="arrowRight" size={14} />
+            <Icon name="arrowLeft" size={14} />
             {strings.allGuides}
           </Link>
         )}

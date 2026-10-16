@@ -14,13 +14,13 @@ export function StepPager({ guide, activeIndex }: StepPagerProps) {
   const next = guide.steps[activeIndex + 1]
 
   return (
-    <nav className="mt-14 grid gap-4 border-t border-slate-200 pt-8 sm:grid-cols-2" aria-label="ניווט בין תחנות">
+    <nav className="mt-14 grid gap-4 border-t border-slate-200 pt-8 sm:grid-cols-2" aria-label="Step navigation">
       {prev ? (
         <Link
           to={`/${guide.slug}/${prev.id}`}
           className="group flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 transition hover:border-brand-300 hover:shadow-sm"
         >
-          <Icon name="arrowRight" size={20} className="text-slate-400 transition group-hover:translate-x-1 group-hover:text-brand-600" />
+          <Icon name="arrowLeft" size={20} className="text-slate-400 transition group-hover:-translate-x-1 group-hover:text-brand-600" />
           <span>
             <span className="block text-xs text-slate-500">{strings.prev}</span>
             <span className="block font-bold text-slate-800">{prev.title}</span>
@@ -39,7 +39,7 @@ export function StepPager({ guide, activeIndex }: StepPagerProps) {
             <span className="block text-xs text-white/80">{strings.next}</span>
             <span className="block font-bold">{next.title}</span>
           </span>
-          <Icon name="arrowLeft" size={20} className="transition group-hover:-translate-x-1" />
+          <Icon name="arrowRight" size={20} className="transition group-hover:translate-x-1" />
         </Link>
       ) : (
         <div className="flex items-center gap-3 rounded-2xl border border-brand-200 bg-brand-50 p-4">

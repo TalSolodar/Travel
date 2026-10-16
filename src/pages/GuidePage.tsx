@@ -23,13 +23,13 @@ export function GuidePage() {
     if (guide && step) document.title = `${step.title} | ${guide.title}`
   }, [guide, step])
 
-  // Arrow-key navigation. In RTL, "left" means forward.
+  // Arrow-key navigation: right goes forward, left goes back.
   useEffect(() => {
     if (!guide || activeIndex < 0) return
     const onKey = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement
       if (e.altKey || e.ctrlKey || e.metaKey || target.closest('input, textarea, [contenteditable], [role="tablist"]')) return
-      const delta = e.key === 'ArrowLeft' ? 1 : e.key === 'ArrowRight' ? -1 : 0
+      const delta = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0
       const dest = guide.steps[activeIndex + delta]
       if (delta && dest) navigate(`/${guide.slug}/${dest.id}`)
     }

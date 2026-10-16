@@ -43,7 +43,7 @@ export function MobileBar({ guide, activeIndex }: MobileBarProps) {
             aria-label={strings.prev}
             className={navBtn}
           >
-            <Icon name="arrowRight" size={20} />
+            <Icon name="arrowLeft" size={20} />
           </Link>
 
           <button
@@ -67,7 +67,7 @@ export function MobileBar({ guide, activeIndex }: MobileBarProps) {
             aria-label={strings.next}
             className={navBtn}
           >
-            <Icon name="arrowLeft" size={20} />
+            <Icon name="arrowRight" size={20} />
           </Link>
         </div>
         <ProgressBar

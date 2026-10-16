@@ -1,6 +1,6 @@
-# Travel Guides (מדריכי מסע)
+# Travel Guides
 
-Hebrew, RTL, step-by-step travel guides. Built with React, TypeScript, Vite and Tailwind CSS v4.
+English, step-by-step travel guides. Built with React, TypeScript, Vite and Tailwind CSS v4.
 
 ```bash
 npm install
@@ -26,7 +26,7 @@ src/
     icons.ts              ← icon name → lucide icon
     themes.ts             ← per-guide color palettes
     tones.ts              ← colors for callouts/options/ratings
-    strings.ts            ← all UI copy (Hebrew)
+    strings.ts            ← all UI copy
 ```
 
 Routes: `/` lists the guides, `/:guide` redirects to the guide's first step, and `/:guide/:step` shows a step.
@@ -41,8 +41,8 @@ Routes: `/` lists the guides, `/:guide` redirects to the guide's first step, and
 
    export const taiwan: Guide = {
      slug: 'taiwan',
-     country: 'טייוואן',
-     title: 'טייוואן',
+     country: 'Taiwan',
+     title: 'Taiwan',
      tagline: '...',
      description: '...',
      coverImage: 'https://...',
@@ -52,12 +52,12 @@ Routes: `/` lists the guides, `/:guide` redirects to the guide's first step, and
        {
          id: 'taipei',
          icon: 'city',
-         title: 'טאיפיי',
+         title: 'Taipei',
          subtitle: '...',
          image: 'https://...',
          blocks: [
            { type: 'heading', text: '...' },
-           { type: 'paragraph', lead: true, text: 'טקסט עם **הדגשה**' },
+           { type: 'paragraph', lead: true, text: 'Text with **bold**' },
          ],
        },
      ],

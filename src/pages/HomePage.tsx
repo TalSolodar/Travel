@@ -63,7 +63,7 @@ function GuideCard({ guide }: { guide: Guide }) {
         <p className="mb-5 text-sm leading-relaxed text-slate-600">{guide.description}</p>
         <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-brand-700">
           {strings.startGuide}
-          <Icon name="arrowLeft" size={16} className="transition group-hover:-translate-x-1" />
+          <Icon name="arrowRight" size={16} className="transition group-hover:translate-x-1" />
         </span>
       </div>
     </Link>

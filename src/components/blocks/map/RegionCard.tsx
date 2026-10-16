@@ -11,7 +11,6 @@ interface RegionCardProps {
 export function RegionCard({ region, active = false, className = '' }: RegionCardProps) {
   return (
     <div
-      dir="rtl"
       className={`rounded-xl border-s-4 bg-white p-3.5 text-start font-sans transition-shadow ${active ? 'shadow-xl ring-2 ring-slate-900/10' : 'shadow-md'} ${className}`}
       style={{ borderInlineStartColor: region.color }}
     >

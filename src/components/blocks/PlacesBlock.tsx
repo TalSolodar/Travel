@@ -64,7 +64,7 @@ function PlaceCard({ place }: { place: Place }) {
 
 function Stars({ count }: { count: number }) {
   return (
-    <span className="flex text-amber-400" aria-label={`${count} כוכבים`}>
+    <span className="flex text-amber-400" aria-label={`${count} stars`}>
       {Array.from({ length: count }, (_, i) => (
         <Icon key={i} name="star" size={15} className="fill-current" />
       ))}

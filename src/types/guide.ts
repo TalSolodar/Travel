@@ -47,7 +47,7 @@ export interface OptionItem {
   title: string
   icon?: IconName
   tone?: Tone
-  /** Small ribbon such as "הבחירה האותנטית". */
+  /** Small ribbon such as "The authentic choice". */
   badge?: string
   /** Visually highlights this option as the recommended one. */
   recommended?: boolean
@@ -70,7 +70,7 @@ export type TableCell =
       text: string
       rating?: Rating
       icon?: IconName
-      /** Smaller explanation under the text, e.g. "אביב נעים ונוח". */
+      /** Smaller explanation under the text, e.g. "Pleasant, mild spring". */
       note?: string
     }
 
@@ -97,9 +97,9 @@ export interface SeasonsBlock {
 }
 
 export interface ClimatePeriod {
-  /** e.g. "מרץ - אפריל | ספטמבר - נובמבר" */
+  /** e.g. "March - April | September - November" */
   months: string
-  /** e.g. "אביב וסתיו", "עונת הטייפונים" */
+  /** e.g. "Spring & autumn", "Typhoon season" */
   season?: string
   /** e.g. "20°-28°" */
   temp?: string
@@ -109,12 +109,12 @@ export interface ClimatePeriod {
 
 export interface ClimateRegion {
   name: string
-  /** Main places in the region, e.g. "האנוי, סאפה, האלונג ביי". */
+  /** Main places in the region, e.g. "Hanoi, Sapa, Ha Long Bay". */
   places?: string
   /** Matches the region's color on the map. */
   color?: string
   intro?: RichText
-  /** The short answer, highlighted at the top, e.g. "מרץ-אפריל, ספטמבר-נובמבר". */
+  /** The short answer, highlighted at the top, e.g. "March-April, September-November". */
   best?: string
   periods: ClimatePeriod[]
 }
@@ -133,14 +133,14 @@ export type LngLat = [number, number]
 export interface MapPlace {
   name: string
   coords: LngLat
-  /** Side of the dot the name sits on. Defaults to 'left' (natural for Hebrew). */
+  /** Side of the dot the name sits on. Defaults to 'left'. */
   labelSide?: 'left' | 'right'
 }
 
 export interface MapRegion {
   /** Must match `properties.id` of a feature in the geo source. */
   id: string
-  /** Label shown under the pin, e.g. "צפון ויאטנם". */
+  /** Label shown under the pin, e.g. "Northern Vietnam". */
   name: string
   /** Tooltip card title. */
   title: string

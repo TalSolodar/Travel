@@ -22,11 +22,11 @@ export function ClimateBlock({ block }: { block: ClimateBlockData }) {
     tabRefs.current[next]?.focus()
   }
 
-  // RTL tabs: Left arrow moves forward.
+  // Right arrow moves forward.
   const onKeyDown = (e: KeyboardEvent) => {
     const moves: Record<string, number> = {
-      ArrowLeft: activeIndex + 1,
-      ArrowRight: activeIndex - 1,
+      ArrowRight: activeIndex + 1,
+      ArrowLeft: activeIndex - 1,
       Home: 0,
       End: block.regions.length - 1,
     }
