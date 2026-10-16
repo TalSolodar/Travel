@@ -1,32 +1,122 @@
+import type { Locale } from '../i18n/locales'
 import type { Rating } from '../types/guide'
 
-/** All UI copy lives here so components stay content-agnostic. */
-export const strings = {
-  siteName: 'Travel Guides',
-  siteTagline: 'Practical, step-by-step guides. No filters.',
-  chooseGuide: 'Choose a destination',
-  startGuide: 'Start the guide',
-  stepsCount: (n: number) => `${n} steps`,
-  stepLabel: (n: number) => `Step ${n}`,
-  stepOf: (n: number, total: number) => `Step ${n} of ${total}`,
-  prev: 'Previous',
-  next: 'Next',
-  finishTitle: "You've finished the guide!",
-  finishText: "Now you're ready. You can go back to any step from the menu.",
-  backToStart: 'Back to the first step',
-  allGuides: 'All guides',
-  openSteps: 'All steps',
-  close: 'Close',
-  editorsPick: "Editor's pick",
-  goldenTip: 'Golden tip',
-  backToTimeline: 'Back to timeline',
-  pros: 'Pros',
-  cons: 'Cons',
-  notFound: 'Page not found',
-  backHome: 'Back to home',
-  months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  ratings: { good: 'Recommended', ok: 'Possible', bad: 'Less recommended' } satisfies Record<Rating, string>,
-  climateRatings: { good: 'Recommended', ok: 'Possible', bad: 'Take care' } satisfies Record<Rating, string>,
-  bestTime: 'Best time to visit',
-  defaultDisclaimer: "We started with what matters most: the weather. Itineraries, hotels and getting around are coming soon. Stay tuned!"
+/** All UI copy, per language, so components stay content-agnostic. The site name lives in config/site.ts. */
+export interface UiStrings {
+  /** The home page H1: descriptive and close to its SEO title. */
+  homeHeading: string
+  siteTagline: string
+  chooseGuide: string
+  startGuide: string
+  readGuide: string
+  stepsCount: (n: number) => string
+  stepLabel: (n: number) => string
+  stepOf: (n: number, total: number) => string
+  prev: string
+  next: string
+  stepNavigation: string
+  finishTitle: string
+  finishText: string
+  backToStart: string
+  allGuides: string
+  openSteps: string
+  close: string
+  editorsPick: string
+  goldenTip: string
+  backToTimeline: string
+  pros: string
+  cons: string
+  stars: (n: number) => string
+  notFound: string
+  backHome: string
+  months: string[]
+  ratings: Record<Rating, string>
+  climateRatings: Record<Rating, string>
+  bestTime: string
+  defaultDisclaimer: string
+  languageSwitcher: string
+  footerNav: string
+  footerLinks: { home: string; about: string; privacy: string; affiliate: string }
+  affiliateNote: string
+  affiliateNoteLink: string
+}
+
+export const uiStrings: Record<Locale, UiStrings> = {
+  en: {
+    homeHeading: 'Vietnam Travel Guides: Practical Tips, Step by Step',
+    siteTagline: 'Practical, step-by-step guides. No filters.',
+    chooseGuide: 'Choose a destination',
+    startGuide: 'Start the guide',
+    readGuide: 'Read this guide',
+    stepsCount: (n) => `${n} steps`,
+    stepLabel: (n) => `Step ${n}`,
+    stepOf: (n, total) => `Step ${n} of ${total}`,
+    prev: 'Previous',
+    next: 'Next',
+    stepNavigation: 'Step navigation',
+    finishTitle: "You've finished the guide!",
+    finishText: "Now you're ready. You can go back to any step from the menu.",
+    backToStart: 'Back to the first step',
+    allGuides: 'All guides',
+    openSteps: 'All steps',
+    close: 'Close',
+    editorsPick: "Editor's pick",
+    goldenTip: 'Golden tip',
+    backToTimeline: 'Back to timeline',
+    pros: 'Pros',
+    cons: 'Cons',
+    stars: (n) => `${n} stars`,
+    notFound: 'Page not found',
+    backHome: 'Back to home',
+    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    ratings: { good: 'Recommended', ok: 'Possible', bad: 'Less recommended' },
+    climateRatings: { good: 'Recommended', ok: 'Possible', bad: 'Take care' },
+    bestTime: 'Best time to visit',
+    defaultDisclaimer:
+      'We started with what matters most: the weather. Itineraries, hotels and getting around are coming soon. Stay tuned!',
+    languageSwitcher: 'Language',
+    footerNav: 'Site',
+    footerLinks: { home: 'Home', about: 'About us', privacy: 'Privacy policy', affiliate: 'Affiliate disclosure' },
+    affiliateNote:
+      'Some links on this page are affiliate links. If you book through them, we may earn a small commission at no extra cost to you.',
+    affiliateNoteLink: 'Read our affiliate disclosure',
+  },
+  he: {
+    homeHeading: 'מדריכי טיול לויאטנם: טיפים מעשיים, צעד אחר צעד',
+    siteTagline: 'מדריכים מעשיים, צעד אחר צעד, בלי פילטרים.',
+    chooseGuide: 'בחרו יעד',
+    startGuide: 'מתחילים במסלול',
+    readGuide: 'למדריך המלא',
+    stepsCount: (n) => `${n} תחנות`,
+    stepLabel: (n) => `תחנה ${n}`,
+    stepOf: (n, total) => `תחנה ${n} מתוך ${total}`,
+    prev: 'הקודם',
+    next: 'הבא',
+    stepNavigation: 'ניווט בין תחנות',
+    finishTitle: 'סיימתם את המסלול!',
+    finishText: 'עכשיו אתם מוכנים. אפשר לחזור לכל תחנה מהתפריט.',
+    backToStart: 'חזרה לתחנה הראשונה',
+    allGuides: 'כל המדריכים',
+    openSteps: 'כל התחנות',
+    close: 'סגירה',
+    editorsPick: 'בחירת העורכת',
+    goldenTip: 'טיפ זהב',
+    backToTimeline: 'חזרה לציר הזמן',
+    pros: 'יתרונות',
+    cons: 'חסרונות',
+    stars: (n) => `${n} כוכבים`,
+    notFound: 'העמוד לא נמצא',
+    backHome: 'חזרה לעמוד הבית',
+    months: ['ינו', 'פבר', 'מרץ', 'אפר', 'מאי', 'יונ', 'יול', 'אוג', 'ספט', 'אוק', 'נוב', 'דצמ'],
+    ratings: { good: 'מומלץ', ok: 'אפשרי', bad: 'פחות מומלץ' },
+    climateRatings: { good: 'מומלץ', ok: 'אפשרי', bad: 'להיזהר' },
+    bestTime: 'הזמן הכי טוב לבקר',
+    defaultDisclaimer: 'התחלנו עם הכי חשוב: מזג האוויר והכנות לטיסה. מסלולים, מלונות ודרכי הגעה יעלו בקרוב. יש למה לחכות!',
+    languageSwitcher: 'שפה',
+    footerNav: 'האתר',
+    footerLinks: { home: 'דף הבית', about: 'אודות', privacy: 'מדיניות פרטיות', affiliate: 'גילוי נאות: קישורי שותפים' },
+    affiliateNote:
+      'חלק מהקישורים בעמוד הם קישורי שותפים. אם תזמינו דרכם, ייתכן שנקבל עמלה קטנה, בלי שום עלות נוספת עבורכם.',
+    affiliateNoteLink: 'לגילוי הנאות המלא',
+  },
 }

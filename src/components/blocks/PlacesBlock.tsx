@@ -1,3 +1,4 @@
+import { useStrings } from '../../i18n/context'
 import type { Place, PlacesBlock as PlacesBlockData } from '../../types/guide'
 import { ActionLink } from '../ui/ActionLink'
 import { Badge } from '../ui/Badge'
@@ -63,8 +64,9 @@ function PlaceCard({ place }: { place: Place }) {
 }
 
 function Stars({ count }: { count: number }) {
+  const strings = useStrings()
   return (
-    <span className="flex text-amber-400" aria-label={`${count} stars`}>
+    <span className="flex text-amber-400" aria-label={strings.stars(count)}>
       {Array.from({ length: count }, (_, i) => (
         <Icon key={i} name="star" size={15} className="fill-current" />
       ))}

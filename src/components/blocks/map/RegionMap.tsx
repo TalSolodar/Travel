@@ -5,11 +5,12 @@ import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url'
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { loadGeo, type GeoKey } from '../../../data/geo'
+import type { Locale } from '../../../i18n/locales'
 import type { MapPlace, MapRegion } from '../../../types/guide'
 import { RegionCard } from './RegionCard'
 import { MAP_STYLE_URL } from './style'
 
-/** Basemap label layers we keep, shown in English where available. Everything else is hidden. */
+/** Basemap label layers we keep, shown in the page language where available. Everything else is hidden. */
 const KEEP_LABELS = /^(label_country|water_name)/
 
 const PIN_SIZE = 34
@@ -22,6 +23,8 @@ maplibregl.setWorkerUrl(workerUrl)
 export interface RegionMapProps {
   geo: GeoKey
   countryCode?: string
+  /** Language for the basemap's country and sea names. */
+  locale: Locale
   regions: MapRegion[]
   activeId: string | null
   onActiveChange: (id: string | null) => void
@@ -39,6 +42,7 @@ interface Mounts {
 export default function RegionMap({
   geo,
   countryCode,
+  locale,
   regions,
   activeId,
   onActiveChange,
@@ -85,7 +89,7 @@ export default function RegionMap({
       // regions and pins (local data) show right away instead of waiting for the whole basemap.
       map.once('style.load', () => {
         if (!map) return
-        localizeBasemap(map, countryCode)
+        localizeBasemap(map, locale, countryCode)
         addRegionLayers(map, data, regions)
 
         map.on('mousemove', 'regions-fill', (e) => {
@@ -150,7 +154,7 @@ export default function RegionMap({
       mapRef.current = null
       setMounts(null)
     }
-  }, [geo, countryCode, regions])
+  }, [geo, countryCode, locale, regions])
 
   // Highlight the active region.
   useEffect(() => {
@@ -314,11 +318,11 @@ function boundsOf(data: FeatureCollection): maplibregl.LngLatBoundsLike {
 }
 
 /**
- * Hide basemap clutter and show the remaining labels in English where the data has it.
+ * Hide basemap clutter and show the remaining labels in the page language where the data has it.
  * The label of `countryCode` itself is blanked, since the region pins already name it.
  */
-function localizeBasemap(map: maplibregl.Map, countryCode?: string) {
-  const name: maplibregl.ExpressionSpecification = ['coalesce', ['get', 'name:en'], ['get', 'name_en'], ['get', 'name']]
+function localizeBasemap(map: maplibregl.Map, locale: Locale, countryCode?: string) {
+  const name: maplibregl.ExpressionSpecification = ['coalesce', ['get', `name:${locale}`], ['get', 'name:en'], ['get', 'name_en'], ['get', 'name']]
   for (const layer of map.getStyle().layers) {
     if (layer.type !== 'symbol') continue
     if (KEEP_LABELS.test(layer.id)) {

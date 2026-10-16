@@ -1,5 +1,5 @@
-import { themes } from '../../lib/themes'
-import type { Guide } from '../../types/guide'
+import { themes } from '../../../lib/themes'
+import type { Guide } from '../../../types/guide'
 
 const unsplash = (id: string, w = 1200) =>
   `https://images.unsplash.com/${id}?ixlib=rb-4.0.3&auto=format&fit=crop&w=${w}&q=80`
@@ -10,6 +10,16 @@ export const vietnam: Guide = {
   title: 'Vietnam, for real!',
   tagline: 'The practical guide',
   description: 'Hanoi, Sapa, Ninh Binh and Ha Long Bay: when to go, where to stay and how to get between them.',
+  hub: {
+    heading: 'Vietnam Travel Guide: Plan Your Trip Step by Step',
+    intro:
+      'Vietnam stretches almost 1,650 km from the misty mountains of Sapa to the beaches of Phu Quoc, so a good trip starts with good planning. Our practical guides walk you through it **step by step**: when to go, what to sort out before you fly, and how to handle money once you land.',
+    seo: {
+      title: 'Vietnam Travel Guide: Plan Your Trip Step by Step',
+      description:
+        'Plan your Vietnam trip with practical, step-by-step guides: the best time to visit by region, e-visa, vaccines, airport fast track and money tips.',
+    },
+  },
   coverImage: unsplash('photo-1528127269322-539801943592'),
   icon: 'leaf',
   theme: themes.jade,
@@ -23,6 +33,7 @@ export const vietnam: Guide = {
       },
       icon: 'weather',
       title: 'Weather & planning',
+      heading: 'Best Time to Visit Vietnam: Weather by Region',
       subtitle: 'When is it worth going?',
       image: '/images/vietnam.jpg',
       blocks: [
@@ -202,13 +213,13 @@ export const vietnam: Guide = {
     {
       id: 'before-you-go',
       seo: {
-        title: 'Vietnam Travel Checklist: E-Visa, Vaccines & Money',
+        title: 'Before You Go to Vietnam: Visa, Money & Vaccines',
         description:
           'What to do before your Vietnam trip: vaccines, the e-visa, airport fast track, the digital arrival card, and how to handle cash, cards and ATMs.',
       },
-      affiliateLinks: true,
       icon: 'plane',
       title: 'Before you fly',
+      heading: 'Before You Go to Vietnam: Visa, Money & Vaccines',
       subtitle: 'Vaccines, visa, money: what to do and when',
       image: '/images/before-you-go.jpg',
       blocks: [
@@ -383,7 +394,6 @@ export const vietnam: Guide = {
     },
     {
       id: 'hanoi',
-      affiliateLinks: true,
       seo: {
         title: 'Where to Stay in Hanoi: Quiet Hotels in the Old Quarter',
         description:
@@ -433,7 +443,6 @@ export const vietnam: Guide = {
     },
     {
       id: 'transit',
-      affiliateLinks: true,
       display: false,
       icon: 'train',
       title: 'Getting to Sapa',

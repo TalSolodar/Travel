@@ -1,4 +1,4 @@
-import { strings } from '../../lib/strings'
+import { useStrings } from '../../i18n/context'
 import { toneStyles } from '../../lib/tones'
 import type { OptionItem, OptionsBlock as OptionsBlockData } from '../../types/guide'
 import { ActionLink } from '../ui/ActionLink'
@@ -18,6 +18,7 @@ export function OptionsBlock({ block }: { block: OptionsBlockData }) {
 }
 
 function OptionCard({ item }: { item: OptionItem }) {
+  const strings = useStrings()
   const tone = toneStyles[item.tone ?? 'brand']
   const ring = item.recommended ? 'ring-2 ring-brand-500/60' : ''
 
@@ -74,6 +75,7 @@ function OptionCard({ item }: { item: OptionItem }) {
 }
 
 function ProCon({ text, kind }: { text: string; kind: 'pro' | 'con' }) {
+  const strings = useStrings()
   const isPro = kind === 'pro'
   return (
     <li className="flex gap-2">

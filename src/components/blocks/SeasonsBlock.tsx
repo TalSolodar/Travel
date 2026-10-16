@@ -1,4 +1,4 @@
-import { strings } from '../../lib/strings'
+import { useStrings } from '../../i18n/context'
 import { ratingStyles } from '../../lib/tones'
 import type { Rating, SeasonsBlock as SeasonsBlockData } from '../../types/guide'
 import { Card } from '../ui/Card'
@@ -8,6 +8,7 @@ import { RichText } from '../ui/RichText'
 const legend: Rating[] = ['good', 'ok', 'bad']
 
 export function SeasonsBlock({ block }: { block: SeasonsBlockData }) {
+  const strings = useStrings()
   return (
     <Card className="p-5 md:p-6">
       {block.title && (

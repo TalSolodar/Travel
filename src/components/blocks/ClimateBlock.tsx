@@ -1,6 +1,6 @@
 import { useId, useRef, useState, type KeyboardEvent } from 'react'
 import type { IconName } from '../../lib/icons'
-import { strings } from '../../lib/strings'
+import { useLocale, useStrings } from '../../i18n/context'
 import { ratingStyles } from '../../lib/tones'
 import type { ClimateBlock as ClimateBlockData, ClimatePeriod, ClimateRegion, Rating } from '../../types/guide'
 import { Card } from '../ui/Card'
@@ -10,6 +10,7 @@ import { RichText } from '../ui/RichText'
 const badgeIcons: Record<Rating, IconName> = { good: 'check', ok: 'info', bad: 'warning' }
 
 export function ClimateBlock({ block }: { block: ClimateBlockData }) {
+  const { dir } = useLocale()
   const [activeIndex, setActiveIndex] = useState(0)
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([])
   const baseId = useId()
@@ -21,11 +22,11 @@ export function ClimateBlock({ block }: { block: ClimateBlockData }) {
     tabRefs.current[next]?.focus()
   }
 
-  // Right arrow moves forward.
+  // The arrow pointing in the reading direction moves forward.
   const onKeyDown = (e: KeyboardEvent) => {
     const moves: Record<string, number> = {
-      ArrowRight: activeIndex + 1,
-      ArrowLeft: activeIndex - 1,
+      [dir === 'rtl' ? 'ArrowLeft' : 'ArrowRight']: activeIndex + 1,
+      [dir === 'rtl' ? 'ArrowRight' : 'ArrowLeft']: activeIndex - 1,
       Home: 0,
       End: block.regions.length - 1,
     }
@@ -103,6 +104,7 @@ export function ClimateBlock({ block }: { block: ClimateBlockData }) {
 }
 
 function RegionPanel({ region }: { region: ClimateRegion }) {
+  const strings = useStrings()
   return (
     <div className="space-y-4">
       {(region.places || region.intro) && (
@@ -143,6 +145,7 @@ function RegionPanel({ region }: { region: ClimateRegion }) {
 }
 
 function PeriodCard({ period }: { period: ClimatePeriod }) {
+  const strings = useStrings()
   const style = ratingStyles[period.rating]
   return (
     <li className="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-4 ps-5">

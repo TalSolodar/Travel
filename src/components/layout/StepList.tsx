@@ -1,3 +1,4 @@
+import { useLocale } from '../../i18n/context'
 import { Link } from 'react-router-dom'
 import type { Guide } from '../../types/guide'
 import { Icon } from '../ui/Icon'
@@ -10,6 +11,7 @@ interface StepListProps {
 
 /** Vertical timeline of all steps in a guide. */
 export function StepList({ guide, activeIndex, onNavigate }: StepListProps) {
+  const { href } = useLocale()
   return (
     <ol className="relative">
       {guide.steps.map((step, index) => {
@@ -32,7 +34,7 @@ export function StepList({ guide, activeIndex, onNavigate }: StepListProps) {
               />
             )}
             <Link
-              to={`/${guide.slug}/${step.id}`}
+              to={href(`/${guide.slug}/${step.id}`)}
               onClick={onNavigate}
               aria-current={isActive ? 'step' : undefined}
               className={`group relative flex items-center gap-3 rounded-xl p-2.5 transition-colors ${isActive ? 'bg-brand-50' : 'hover:bg-slate-50'}`}

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
-import { strings } from '../../lib/strings'
+import { useStrings } from '../../i18n/context'
 import type { TimelineBlock as TimelineBlockData, TimelineTask } from '../../types/guide'
 import { Icon } from '../ui/Icon'
 import { RichText } from '../ui/RichText'
@@ -111,6 +111,7 @@ interface TaskSectionProps {
 }
 
 function TaskSection({ task, index, flash, onBack }: TaskSectionProps) {
+  const strings = useStrings()
   return (
     <section
       id={task.id}

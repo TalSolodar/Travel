@@ -1,6 +1,6 @@
 # Travel Guides
 
-English, step-by-step travel guides. Built with React, TypeScript, Vite and Tailwind CSS v4.
+English and Hebrew step-by-step travel guides. Built with React, TypeScript, Vite and Tailwind CSS v4.
 
 ```bash
 npm install
@@ -16,7 +16,8 @@ The guide pages contain no hard-coded content. A guide is a data file, and the c
 src/
   types/guide.ts          ← the data model (Guide → Step → Block)
   data/guides/
-    vietnam.ts            ← a guide
+    en/vietnam.ts         ← a guide (English)
+    he/vietnam.ts         ← the same guide (Hebrew)
     index.ts              ← registry of all guides
   components/
     blocks/               ← one component per block type
@@ -33,7 +34,7 @@ Routes: `/` lists the guides, `/:guide` redirects to the guide's first step, and
 
 ## Adding a new guide (e.g. Taiwan)
 
-1. Create `src/data/guides/taiwan.ts`:
+1. Create `src/data/guides/en/taiwan.ts` (and `he/taiwan.ts` for Hebrew), with a `hub` block for its hub page:
 
    ```ts
    import { themes } from '../../lib/themes'
@@ -64,7 +65,7 @@ Routes: `/` lists the guides, `/:guide` redirects to the guide's first step, and
    }
    ```
 
-2. Register it in `src/data/guides/index.ts`: `export const guides = [vietnam, taiwan]`.
+2. Register it per language in `src/data/guides/index.ts`, e.g. `en: [vietnamEn, taiwanEn]`.
 
 The guide then shows up on the home page with its own color theme.
 
@@ -110,20 +111,29 @@ For another country, copy the script, change the province-to-region mapping, and
 
 External links open in a new tab with `rel="sponsored noopener noreferrer"`. The links in `vietnam.ts` are still `#` placeholders; replace them with your real affiliate URLs.
 
+## Languages (English + Hebrew)
+
+Every page lives under a language prefix: `/en/...` and `/he/...`. Hebrew pages get `lang="he" dir="rtl"`.
+
+- **Content per language:** `src/data/guides/en/*.ts` and `src/data/guides/he/*.ts`, registered in `src/data/guides/index.ts`. The two can differ freely (e.g. Israel-specific info in Hebrew). Use the **same slug and step ids** for pages that are translations of each other: that links them with `hreflang` and the language switcher. A page that exists in only one language simply has no alternate.
+- **UI strings:** `src/lib/strings.ts` (one block per language). Components read them with `useLocale()` / `useStrings()` from `src/i18n/context.tsx`.
+- **Text pages** (About, Privacy, Affiliate Disclosure) have one version per language inside each page component in `src/pages/`.
+- **Adding a language:** add it to `locales` in `src/i18n/locales.ts`, then fill in strings, guides and static page metadata. TypeScript points out every missing piece.
+
 ## SEO and pre-rendering
 
-`npm run build` outputs fully pre-rendered static HTML, so every page's text is in the HTML even without JavaScript. React then hydrates on top for the interactive parts.
+`npm run build` outputs fully pre-rendered static HTML for every page in every language. React hydrates on top for the interactive parts.
 
 1. `vite build` builds the browser app into `dist/`.
 2. `vite build --ssr src/entry-server.tsx` builds a small Node renderer into `dist-ssr/`.
-3. `scripts/prerender.mjs` renders every route to `dist/<path>.html` and writes `404.html`, `sitemap.xml` and `robots.txt`. It fails the build if a title or description is too long or duplicated, or a page doesn't have exactly one `<h1>`.
+3. `scripts/prerender.mjs` renders every route to `dist/<path>.html` and writes `404.html`, `sitemap.xml` (with hreflang alternates) and `robots.txt`. It fails the build if a title or description is too long or duplicated, a page doesn't have exactly one `<h1>`, or a page with affiliate links lacks the disclosure note.
 
-- **Site URL:** set the `SITE_URL` environment variable (default in `src/config/site.ts`). Canonicals, Open Graph URLs, the sitemap and robots.txt all use it.
-- **Page titles and descriptions:** guide steps take them from the step's `seo` field (falling back to its title and subtitle); other pages are in `staticPages` in `src/lib/seo.ts`.
-- **New routes** come from the guide data, so new guides and steps are pre-rendered and added to the sitemap automatically. For a new non-guide page, add a `<Route>` in `src/App.tsx` and an entry in `staticPages`.
-- **Affiliate note:** set `affiliateLinks: true` on a step, or place `<AffiliateNote />` from `src/components/ui/AffiliateNote.tsx`.
+- **Brand and URL:** `SITE_NAME` and the default `SITE_URL` are in `src/config/site.ts`. Override the URL with the `SITE_URL` environment variable.
+- **Titles and descriptions:** guide hubs use `hub.seo`, steps use `seo` (falling back to title/subtitle), other pages are in `staticMeta` in `src/lib/seo.ts`. Each step's H1 is its `heading`.
+- **Hub pages:** `/<lang>/<guide>` lists every published step of a guide, from `hub` in the guide data.
+- **Affiliate note:** shown automatically at the top of any step whose content has affiliate links (any link not marked `sponsored: false`, including `#` placeholders). For other pages, place `<AffiliateNote />`.
 - **Maps** need a browser, so the pre-rendered HTML shows a placeholder until the map loads.
 
 ## Deployment
 
-`vercel.json` uses `cleanUrls`, so `/vietnam/weather` serves `vietnam/weather.html`, and unknown URLs get `404.html` with a real 404 status. There is no catch-all rewrite.
+`vercel.json` uses `cleanUrls`, so `/en/vietnam/weather` serves `en/vietnam/weather.html`, and unknown URLs get `404.html` with a real 404 status. There is no catch-all rewrite. It also redirects `/` to `/en` and the old un-prefixed URLs (`/vietnam/...`, `/about`, ...) permanently to their `/en/` versions.

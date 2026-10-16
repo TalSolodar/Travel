@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { loadGeo } from '../../data/geo'
+import { useLocale } from '../../i18n/context'
 import type { MapBlock as MapBlockData, MapRegion } from '../../types/guide'
 import { MAP_STYLE_URL } from './map/style'
 import { Card } from '../ui/Card'
@@ -15,6 +16,7 @@ const RegionMap = lazy(loadRegionMap)
 const WIDE_MIN = 640
 
 export function MapBlock({ block }: { block: MapBlockData }) {
+  const { locale } = useLocale()
   const wrapperRef = useRef<HTMLDivElement>(null)
   const [wide, setWide] = useState(true)
   const [activeId, setActiveId] = useState<string | null>(null)
@@ -65,6 +67,7 @@ export function MapBlock({ block }: { block: MapBlockData }) {
             <RegionMap
               geo={block.geo}
               countryCode={block.countryCode}
+              locale={locale}
               regions={block.regions}
               activeId={shownId}
               onActiveChange={setActiveId}

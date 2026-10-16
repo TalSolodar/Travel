@@ -268,23 +268,35 @@ export interface Step {
   /** Set to false to hide the step without deleting it. Defaults to true. */
   display?: boolean
   /** Search-engine title (max ~60 chars) and description (max ~155 chars). Falls back to title/subtitle. */
-  seo?: { title: string; description: string }
-  /** Shows the affiliate disclosure note at the top of the step. */
-  affiliateLinks?: boolean
+  seo?: SeoFields
   icon: IconName
+  /** Short name, used in menus and cards. */
   title: string
+  /** The page's H1: descriptive and close to the SEO title. Falls back to `title`. */
+  heading?: string
   subtitle: string
   image?: string
   blocks: Block[]
 }
 
+export interface SeoFields {
+  title: string
+  description: string
+}
+
 export interface Guide {
-  /** URL slug, e.g. "vietnam". */
+  /** URL slug, e.g. "vietnam". Use the same slug in every language so the pages link up as translations. */
   slug: string
   country: string
   title: string
   tagline: string
   description: string
+  /** The guide's hub page (/<lang>/<slug>): its H1, intro text and search metadata. */
+  hub: {
+    heading: string
+    intro: RichText
+    seo: SeoFields
+  }
   coverImage: string
   icon: IconName
   theme?: BrandTheme

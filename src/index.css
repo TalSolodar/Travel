@@ -39,6 +39,17 @@
   }
 }
 
+/* The mobile steps drawer slides in from the start side, which is the right in RTL. */
+@keyframes slide-in-rtl {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+[dir='rtl'] .animate-slide-in {
+  animation-name: slide-in-rtl;
+}
+
 /* MapLibre's stylesheet sets Helvetica/Arial on the map; use the site font for pins and cards. */
 .maplibregl-map {
   font-family: var(--font-sans);

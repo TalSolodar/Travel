@@ -15,4 +15,5 @@ export function render(url: string) {
 }
 
 export { SITE_URL } from './config/site'
-export { absoluteUrl, getPageMeta, guideRedirects, headTags, notFoundMeta, pagePaths } from './lib/seo'
+export { containsAffiliateLinks } from './lib/affiliate'
+export { absoluteUrl, getPageMeta, headTags, htmlAttrs, notFoundMeta, pagePaths, sitemapXml } from './lib/seo'
