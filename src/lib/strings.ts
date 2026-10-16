@@ -34,7 +34,6 @@ export interface UiStrings {
   climateRatings: Record<Rating, string>
   bestTime: string
   defaultDisclaimer: string
-  languageSwitcher: string
   footerNav: string
   footerLinks: { home: string; about: string; privacy: string; affiliate: string }
   affiliateNote: string
@@ -74,7 +73,6 @@ export const uiStrings: Record<Locale, UiStrings> = {
     bestTime: 'Best time to visit',
     defaultDisclaimer:
       'We started with what matters most: the weather. Itineraries, hotels and getting around are coming soon. Stay tuned!',
-    languageSwitcher: 'Language',
     footerNav: 'Site',
     footerLinks: { home: 'Home', about: 'About us', privacy: 'Privacy policy', affiliate: 'Affiliate disclosure' },
     affiliateNote:
@@ -112,7 +110,6 @@ export const uiStrings: Record<Locale, UiStrings> = {
     climateRatings: { good: 'מומלץ', ok: 'אפשרי', bad: 'להיזהר' },
     bestTime: 'הזמן הכי טוב לבקר',
     defaultDisclaimer: 'התחלנו עם הכי חשוב: מזג האוויר והכנות לטיסה. מסלולים, מלונות ודרכי הגעה יעלו בקרוב. יש למה לחכות!',
-    languageSwitcher: 'שפה',
     footerNav: 'האתר',
     footerLinks: { home: 'דף הבית', about: 'אודות', privacy: 'מדיניות פרטיות', affiliate: 'גילוי נאות: קישורי שותפים' },
     affiliateNote:

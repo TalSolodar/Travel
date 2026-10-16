@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useLocale } from '../../i18n/context'
-import { LanguageSwitcher } from '../ui/LanguageSwitcher'
 import type { Guide } from '../../types/guide'
 import { Icon } from '../ui/Icon'
 import { ProgressBar } from './ProgressBar'
@@ -61,8 +60,6 @@ export function MobileBar({ guide, activeIndex }: MobileBarProps) {
               <Icon name="chevronDown" size={16} className="shrink-0 text-slate-400" />
             </span>
           </button>
-
-          <LanguageSwitcher compact />
 
           <Link
             to={next ? href(`/${guide.slug}/${next.id}`) : '#'}

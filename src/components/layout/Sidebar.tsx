@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { useLocale } from '../../i18n/context'
-import { LanguageSwitcher } from '../ui/LanguageSwitcher'
 import type { Guide } from '../../types/guide'
 import { Icon } from '../ui/Icon'
 import { ProgressBar } from './ProgressBar'
@@ -17,16 +16,13 @@ export function Sidebar({ guide, activeIndex }: SidebarProps) {
   return (
     <aside className="sticky top-0 hidden h-dvh w-80 shrink-0 flex-col border-e border-slate-200 bg-white lg:flex">
       <div className="border-b border-slate-100 p-6">
-        <div className="mb-4 flex items-center justify-between gap-2">
-          <Link
-            to={href('/')}
-            className="inline-flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-brand-700"
-          >
-            <Icon name="arrowLeft" size={14} className="rtl:-scale-x-100" />
-            {strings.allGuides}
-          </Link>
-          <LanguageSwitcher />
-        </div>
+        <Link
+          to={href('/')}
+          className="mb-4 inline-flex items-center gap-1 text-xs font-medium text-slate-500 hover:text-brand-700"
+        >
+          <Icon name="arrowLeft" size={14} className="rtl:-scale-x-100" />
+          {strings.allGuides}
+        </Link>
         <Link
           to={href(`/${guide.slug}`)}
           className="flex items-center gap-2.5 text-2xl font-extrabold text-slate-900 hover:text-brand-700"

@@ -115,7 +115,7 @@ External links open in a new tab with `rel="sponsored noopener noreferrer"`. The
 
 Every page lives under a language prefix: `/en/...` and `/he/...`. Hebrew pages get `lang="he" dir="rtl"`.
 
-- **Content per language:** `src/data/guides/en/*.ts` and `src/data/guides/he/*.ts`, registered in `src/data/guides/index.ts`. The two can differ freely (e.g. Israel-specific info in Hebrew). Use the **same slug and step ids** for pages that are translations of each other: that links them with `hreflang` and the language switcher. A page that exists in only one language simply has no alternate.
+- **Content per language:** `src/data/guides/en/*.ts` and `src/data/guides/he/*.ts`, registered in `src/data/guides/index.ts`. The two can differ freely (e.g. Israel-specific info in Hebrew). Use the **same slug and step ids** for pages that are translations of each other: that links them with `hreflang`. There is no on-page language switcher; the language comes only from the URL. A page that exists in only one language simply has no alternate.
 - **UI strings:** `src/lib/strings.ts` (one block per language). Components read them with `useLocale()` / `useStrings()` from `src/i18n/context.tsx`.
 - **Text pages** (About, Privacy, Affiliate Disclosure) have one version per language inside each page component in `src/pages/`.
 - **Adding a language:** add it to `locales` in `src/i18n/locales.ts`, then fill in strings, guides and static page metadata. TypeScript points out every missing piece.
