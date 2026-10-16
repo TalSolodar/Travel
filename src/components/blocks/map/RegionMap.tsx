@@ -9,7 +9,7 @@ import type { MapPlace, MapRegion } from '../../../types/guide'
 import { RegionCard } from './RegionCard'
 import { MAP_STYLE_URL } from './style'
 
-/** Basemap label layers we keep, shown in Hebrew where available. Everything else is hidden. */
+/** Basemap label layers we keep, shown in English where available. Everything else is hidden. */
 const KEEP_LABELS = /^(label_country|water_name)/
 
 const PIN_SIZE = 34
@@ -119,7 +119,7 @@ export default function RegionMap({
             closeOnClick: false,
             focusAfterOpen: false,
             className: 'region-popup',
-            maxWidth: '17rem',
+            maxWidth: '14rem',
             anchor: 'left',
             offset: [CARD_GAP, -PIN_SIZE * 0.6],
           })
@@ -292,7 +292,7 @@ function addRegionLayers(map: maplibregl.Map, data: FeatureCollection, regions: 
 function fitPadding(showCards: boolean) {
   // Leave room on the east side for the floating cards.
   return showCards
-    ? { top: 30, bottom: 30, left: 30, right: 300 }
+    ? { top: 30, bottom: 30, left: 30, right: 250 }
     : { top: 24, bottom: 24, left: 24, right: 24 }
 }
 
@@ -314,11 +314,11 @@ function boundsOf(data: FeatureCollection): maplibregl.LngLatBoundsLike {
 }
 
 /**
- * Hide basemap clutter and show the remaining labels in Hebrew where the data has it.
+ * Hide basemap clutter and show the remaining labels in English where the data has it.
  * The label of `countryCode` itself is blanked, since the region pins already name it.
  */
 function localizeBasemap(map: maplibregl.Map, countryCode?: string) {
-  const name: maplibregl.ExpressionSpecification = ['coalesce', ['get', 'name:he'], ['get', 'name_en'], ['get', 'name']]
+  const name: maplibregl.ExpressionSpecification = ['coalesce', ['get', 'name:en'], ['get', 'name_en'], ['get', 'name']]
   for (const layer of map.getStyle().layers) {
     if (layer.type !== 'symbol') continue
     if (KEEP_LABELS.test(layer.id)) {

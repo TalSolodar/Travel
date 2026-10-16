@@ -41,6 +41,10 @@ export interface CalloutBlock {
   title: string
   text: RichText
   icon?: IconName
+  /** Render as quiet small print (e.g. a disclaimer) instead of a colored box. */
+  subtle?: boolean
+  /** Optional button under the text. */
+  link?: LinkAction
 }
 
 export interface OptionItem {
@@ -199,7 +203,48 @@ export interface ListBlock {
   title?: string
   /** Colored dot shown next to the title. */
   tone?: Tone
+  /** Numbered steps instead of bullets. */
+  ordered?: boolean
   items: RichText[]
+  /** Optional button under the list. */
+  link?: LinkAction
+}
+
+export interface Fact {
+  icon: IconName
+  /** Small caption, e.g. "Valid for". */
+  label: string
+  /** The figure itself, e.g. "Up to 90 days". */
+  value: string
+}
+
+/** A row of small "at a glance" tiles. */
+export interface FactsBlock {
+  type: 'facts'
+  items: Fact[]
+}
+
+export interface TimelineTask {
+  /** Anchor id of the task's section, unique on the page. */
+  id: string
+  /** When to do it, e.g. "6-8 weeks before". */
+  when: string
+  title: string
+  /** One line shown in the timeline. */
+  summary: RichText
+  icon: IconName
+  /** Small pill under the summary, e.g. "Takes 3-5 business days". */
+  note?: string
+  /** The full explanation, shown in the task's section under the timeline. */
+  details: Block[]
+}
+
+/** A clickable pre-trip timeline; each task scrolls to its own section below. */
+export interface TimelineBlock {
+  type: 'timeline'
+  title?: string
+  description?: RichText
+  items: TimelineTask[]
 }
 
 export type Block =
@@ -214,6 +259,8 @@ export type Block =
   | PlacesBlock
   | CtaBlock
   | ListBlock
+  | TimelineBlock
+  | FactsBlock
 
 export interface Step {
   /** URL slug, unique inside the guide. */

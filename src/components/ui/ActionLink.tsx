@@ -27,7 +27,7 @@ export function ActionLink({ link, className = '' }: ActionLinkProps) {
       rel={rel}
       className={`inline-flex items-center justify-center gap-2 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600 ${variants[link.variant ?? 'primary']} ${className}`}
     >
-      {link.icon && <Icon name={link.icon} size={16} />}
+      {link.icon && <Icon name={link.icon} size={16} className="shrink-0" />}
       {link.label}
     </a>
   )

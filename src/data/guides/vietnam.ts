@@ -37,8 +37,8 @@ export const vietnam: Guide = {
             {
               id: 'north',
               name: 'Northern Vietnam',
-              title: 'The north and its 4 seasons',
-              text: 'The perfect time is the shoulder seasons (**March-April and September-November**). Watch out for the stormy summer (May-August) and the freezing winter (December-February).',
+              title: 'The north: 4 seasons',
+              text: 'Best in **Mar-Apr and Sep-Nov**. Avoid the stormy summer and the cold winter.',
               color: '#34d399',
               pin: [105.85, 21.03],
               places: [
@@ -49,16 +49,16 @@ export const vietnam: Guide = {
             {
               id: 'center',
               name: 'Central Vietnam',
-              title: 'The center',
-              text: 'The recommended period is February to August, with pleasant weather that is perfect for the beach. On the other hand, be very careful during typhoon season (September-January), which brings heavy rain and a risk of flooding.',
+              title: 'The center: beach weather',
+              text: 'Best in **Feb-Aug**. Typhoons and floods from September to January.',
               color: '#fbbf24',
               pin: [108.21, 16.05],
             },
             {
               id: 'south',
               name: 'Southern Vietnam',
-              title: 'The south: dry season and wet season',
-              text: "It's 25-36 degrees all year round; the difference is the rain. **Dry season:** November - April. **Wet season:** May - October",
+              title: 'The south: dry vs. wet',
+              text: '25°-36° all year. **Dry:** Nov-Apr. **Wet:** May-Oct, with short afternoon rain.',
               color: '#fb7185',
               pin: [106.66, 10.78],
               places: [{ name: 'Phu Quoc', coords: [103.96, 10.23] }],
@@ -190,6 +190,182 @@ export const vietnam: Guide = {
               { text: 'Mixed', rating: 'ok', note: 'Rainy in December-January, clearing in February' },
               { text: 'Ideal', rating: 'good', note: 'Dry, summery season' },
             ],
+          ],
+        },
+      ],
+    },
+    {
+      id: 'before-you-go',
+      icon: 'plane',
+      title: 'Before you fly',
+      subtitle: 'Vaccines, visa, money: what to do and when',
+      image: '/images/before-you-go.jpg',
+      blocks: [
+        {
+          type: 'timeline',
+          title: 'Your pre-trip timeline',
+          description: 'What to prepare and when, before you take off. Tap a task to jump to the details.',
+          items: [
+            {
+              id: 'vaccines',
+              when: '6-8 weeks before',
+              title: 'Vaccines',
+              summary: 'Visit a travel clinic about vaccines.',
+              icon: 'vaccine',
+              details: [
+                {
+                  type: 'paragraph',
+                  text: 'Make sure to schedule an appointment with a travel clinic about **6 to 8 weeks before departure** for your travel vaccines. They will provide you with an updated list of recommended vaccines based on your specific itinerary.',
+                },
+                {
+                  type: 'callout',
+                  tone: 'warning',
+                  icon: 'lightbulb',
+                  title: 'Pro tip',
+                  text: 'The clinic will give you a physical vaccination booklet (often a **yellow card**). **Keep it in your carry-on!** If you ever need medical attention abroad, local doctors will need to see exactly what you are vaccinated against.',
+                },
+                {
+                  type: 'callout',
+                  tone: 'neutral',
+                  icon: 'info',
+                  subtle: true,
+                  title: 'Please note',
+                  text: "This guide doesn't replace professional medical advice. Always consult your clinic before traveling.",
+                },
+              ],
+            },
+            {
+              id: 'visa',
+              when: '3+ weeks before',
+              title: 'E-Visa',
+              summary: 'Apply on the official government website.',
+              icon: 'visa',
+              note: 'Takes about 3-7 business days',
+              details: [
+                {
+                  type: 'paragraph',
+                  text: 'Most nationalities require a visa to enter Vietnam. Processing can take time, and if they catch a small mistake in your form, they will send it back for corrections, which delays the whole process.',
+                },
+                {
+                  type: 'facts',
+                  items: [
+                    { icon: 'calendar', label: 'Valid for', value: 'Up to 90 days' },
+                    { icon: 'visa', label: 'Apply', value: '3+ weeks ahead' },
+                    { icon: 'money', label: 'Cost', value: '$25 / $50' },
+                  ],
+                },
+                {
+                  type: 'list',
+                  ordered: true,
+                  title: 'How to apply',
+                  items: [
+                    "Go to the **official Vietnam government website**. You can use travel agencies, but it's highly recommended to do it yourself. Beware: searching online brings up a lot of fake or unreliable third-party websites.",
+                    'Fill out the online form and choose your visa: **single-entry ($25)** lets you enter only once, and is no longer valid once you leave. **Multiple-entry ($50)** lets you enter and exit as many times as you want within your chosen timeframe.',
+                    'Upload a picture of your passport page and a recent portrait photo. For the portrait: **white background, no glasses, and absolutely no smiling!**',
+                    'Double-check every detail before you submit. A small mistake gets the form sent back for corrections.',
+                  ],
+                  link: { label: 'Official e-visa website', href: 'https://evisa.gov.vn', icon: 'link', sponsored: false },
+                },
+              ],
+            },
+            {
+              id: 'fast-track',
+              when: '1 week before',
+              title: 'Airport fast track',
+              summary: 'Skip the long immigration lines.',
+              icon: 'fast',
+              details: [
+                {
+                  type: 'paragraph',
+                  text: "Immigration lines at Vietnam's main airports, especially in **Hanoi and Ho Chi Minh City**, can be notoriously long. If you are arriving on an international flight during peak evening hours, you could easily end up waiting in line for **almost 3 hours**.",
+                },
+                {
+                  type: 'facts',
+                  items: [
+                    { icon: 'clock', label: 'Peak-hour wait', value: 'Up to 3 hours' },
+                    { icon: 'fast', label: 'With fast track', value: 'Minutes' },
+                    { icon: 'money', label: 'Early bird', value: 'Book 1+ week ahead' },
+                  ],
+                },
+                {
+                  type: 'callout',
+                  tone: 'brand',
+                  icon: 'fast',
+                  title: 'Skip the wait with VIP Fast Track',
+                  text: "A representative will greet you with a **nameboard at passport control** and escort you through a priority lane in minutes. It's relatively inexpensive in Vietnam, so it's absolutely worth booking online in advance. Book **at least a week before** your arrival and you can often snag an **early bird discount**, saving you both money and precious vacation time.",
+                  link: { label: 'Our recommended fast track in Hanoi', href: 'https://klook.tpx.li/n8ZJr6Et', icon: 'fast' },
+                },
+              ],
+            },
+            {
+              id: 'arrival-card',
+              when: 'Just before you fly',
+              title: 'Digital arrival card',
+              summary: 'Fill in the free online form before you land.',
+              icon: 'qr',
+              note: 'Free',
+              details: [
+                {
+                  type: 'paragraph',
+                  text: "All travelers must complete a **100% free** Digital Arrival Card. You can submit it **up to 72 hours before landing**, and it's highly recommended to finish it **before you take off**.",
+                },
+                {
+                  type: 'facts',
+                  items: [
+                    { icon: 'money', label: 'Cost', value: 'Free' },
+                    { icon: 'clock', label: 'Submit', value: 'Up to 72h before' },
+                    { icon: 'plane', label: 'Best time', value: 'Before take-off' },
+                  ],
+                },
+                {
+                  type: 'callout',
+                  tone: 'brand',
+                  icon: 'info',
+                  title: 'Have these ready',
+                  text: 'Your **exact flight number** and your **first hotel address** in Vietnam.',
+                  link: { label: 'Official arrival card website', href: 'https://prearrival.immigration.gov.vn', icon: 'link', sponsored: false },
+                },
+              ],
+            },
+            {
+              id: 'money',
+              when: 'On arrival',
+              title: 'Cash & money',
+              summary: 'Cash, cards, QR payments and where to exchange.',
+              icon: 'money',
+              details: [
+                {
+                  type: 'paragraph',
+                  text: 'The official currency is the **Vietnamese Dong (VND)**. Here is how you should handle your daily spending:',
+                },
+                {
+                  type: 'list',
+                  tone: 'brand',
+                  title: 'How to pay',
+                  items: [
+                    '**Cash is king:** you will absolutely need cash for street food, night markets and smaller local vendors.',
+                    '**Credit cards:** widely accepted at large chain stores and hotels, and essential for ride-hailing apps like Grab (the local Uber).',
+                    "**Digital wallets & QR codes (VNPAY):** you'll see locals scanning QR codes everywhere to pay. Many local apps require a Vietnamese bank account, but tourists can use **VNPAY**. Link your international credit card to it, and you can scan and pay at thousands of shops, restaurants and cafes, just like a local.",
+                  ],
+                },
+                {
+                  type: 'list',
+                  tone: 'brand',
+                  title: 'Exchanging & withdrawing money',
+                  items: [
+                    "**Bring US dollars:** it's highly recommended to bring **crisp, clean USD bills** to exchange on arrival. Larger bills like $50 or $100 usually get better exchange rates.",
+                    '**Where to exchange:** only use authorized banks or official money exchange counters.',
+                    '**ATMs:** withdrawing cash is very convenient, but local bank fees add up quickly. We highly recommend downloading the **ATM Fee Saver** app to find nearby ATMs with zero or low withdrawal fees.',
+                  ],
+                },
+                {
+                  type: 'callout',
+                  tone: 'danger',
+                  title: "Don't exchange at gold shops",
+                  text: 'Exchanging money at local gold and jewelry shops used to be a popular tourist hack, but it is **now illegal** and can result in heavy fines. Stick to the official spots.',
+                },
+              ],
+            },
           ],
         },
       ],

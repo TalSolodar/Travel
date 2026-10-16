@@ -19,6 +19,7 @@ export const strings = {
   close: 'Close',
   editorsPick: "Editor's pick",
   goldenTip: 'Golden tip',
+  backToTimeline: 'Back to timeline',
   pros: 'Pros',
   cons: 'Cons',
   notFound: 'Page not found',

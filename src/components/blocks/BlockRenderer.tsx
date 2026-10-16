@@ -2,6 +2,7 @@ import type { Block } from '../../types/guide'
 import { CalloutBlock } from './CalloutBlock'
 import { ClimateBlock } from './ClimateBlock'
 import { CtaBlock } from './CtaBlock'
+import { FactsBlock } from './FactsBlock'
 import { HeadingBlock } from './HeadingBlock'
 import { ListBlock } from './ListBlock'
 import { MapBlock } from './MapBlock'
@@ -10,6 +11,7 @@ import { ParagraphBlock } from './ParagraphBlock'
 import { PlacesBlock } from './PlacesBlock'
 import { SeasonsBlock } from './SeasonsBlock'
 import { TableBlock } from './TableBlock'
+import { TimelineBlock } from './TimelineBlock'
 
 /** Maps each block `type` in the guide data to its component. */
 export function BlockRenderer({ block }: { block: Block }) {
@@ -36,6 +38,10 @@ export function BlockRenderer({ block }: { block: Block }) {
       return <CtaBlock block={block} />
     case 'list':
       return <ListBlock block={block} />
+    case 'facts':
+      return <FactsBlock block={block} />
+    case 'timeline':
+      return <TimelineBlock block={block} />
   }
 }
 

@@ -11,11 +11,11 @@ interface RegionCardProps {
 export function RegionCard({ region, active = false, className = '' }: RegionCardProps) {
   return (
     <div
-      className={`rounded-xl border-s-4 bg-white p-3.5 text-start font-sans transition-shadow ${active ? 'shadow-xl ring-2 ring-slate-900/10' : 'shadow-md'} ${className}`}
+      className={`rounded-lg border-s-4 bg-white px-3 py-2.5 text-start font-sans transition-shadow ${active ? 'shadow-xl ring-2 ring-slate-900/10' : 'shadow-md'} ${className}`}
       style={{ borderInlineStartColor: region.color }}
     >
-      <h4 className="mb-1 text-base font-bold text-slate-900">{region.title}</h4>
-      <p className="text-[13px] leading-relaxed text-slate-600">
+      <h4 className="mb-0.5 text-sm font-bold text-slate-900">{region.title}</h4>
+      <p className="text-xs leading-relaxed text-slate-600">
         <RichText text={region.text} />
       </p>
     </div>
