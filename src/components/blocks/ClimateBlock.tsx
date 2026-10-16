@@ -13,7 +13,6 @@ export function ClimateBlock({ block }: { block: ClimateBlockData }) {
   const [activeIndex, setActiveIndex] = useState(0)
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([])
   const baseId = useId()
-  const region = block.regions[activeIndex]
 
   const select = (index: number) => {
     const count = block.regions.length
@@ -73,7 +72,7 @@ export function ClimateBlock({ block }: { block: ClimateBlockData }) {
                 role="tab"
                 type="button"
                 aria-selected={selected}
-                aria-controls={`${baseId}-panel`}
+                aria-controls={`${baseId}-panel-${i}`}
                 tabIndex={selected ? 0 : -1}
                 onClick={() => setActiveIndex(i)}
                 className={`flex min-w-0 flex-1 items-center justify-center gap-1.5 rounded-lg px-2 py-2 text-center text-[13px] leading-tight font-semibold transition sm:gap-2 sm:px-3 sm:text-sm ${selected ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-800'}`}
@@ -85,15 +84,19 @@ export function ClimateBlock({ block }: { block: ClimateBlockData }) {
           })}
         </div>
 
-        <div
-          key={activeIndex}
-          id={`${baseId}-panel`}
-          role="tabpanel"
-          aria-labelledby={`${baseId}-tab-${activeIndex}`}
-          className="animate-fade-in pt-5"
-        >
-          <RegionPanel region={region} />
-        </div>
+        {/* Every panel is in the HTML (so search engines see all regions); only the selected one is shown. */}
+        {block.regions.map((r, i) => (
+          <div
+            key={r.name}
+            id={`${baseId}-panel-${i}`}
+            role="tabpanel"
+            aria-labelledby={`${baseId}-tab-${i}`}
+            hidden={i !== activeIndex}
+            className="animate-fade-in pt-5"
+          >
+            <RegionPanel region={r} />
+          </div>
+        ))}
       </div>
     </Card>
   )

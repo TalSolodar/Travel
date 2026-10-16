@@ -16,6 +16,11 @@ export const vietnam: Guide = {
   steps: [
     {
       id: 'weather',
+      seo: {
+        title: 'Best Time to Visit Vietnam: Weather by Region',
+        description:
+          'When to visit Vietnam: the north, center and south have different seasons. Weather by region, typhoon season and the best months for each.',
+      },
       icon: 'weather',
       title: 'Weather & planning',
       subtitle: 'When is it worth going?',
@@ -196,6 +201,12 @@ export const vietnam: Guide = {
     },
     {
       id: 'before-you-go',
+      seo: {
+        title: 'Vietnam Travel Checklist: E-Visa, Vaccines & Money',
+        description:
+          'What to do before your Vietnam trip: vaccines, the e-visa, airport fast track, the digital arrival card, and how to handle cash, cards and ATMs.',
+      },
+      affiliateLinks: true,
       icon: 'plane',
       title: 'Before you fly',
       subtitle: 'Vaccines, visa, money: what to do and when',
@@ -372,6 +383,12 @@ export const vietnam: Guide = {
     },
     {
       id: 'hanoi',
+      affiliateLinks: true,
+      seo: {
+        title: 'Where to Stay in Hanoi: Quiet Hotels in the Old Quarter',
+        description:
+          "Hanoi's Old Quarter is loud. Our picks for quiet, soundproofed hotels in the heart of the city, plus family-friendly options away from the noise.",
+      },
       display: false,
       icon: 'city',
       title: 'Hanoi & where to stay',
@@ -416,6 +433,7 @@ export const vietnam: Guide = {
     },
     {
       id: 'transit',
+      affiliateLinks: true,
       display: false,
       icon: 'train',
       title: 'Getting to Sapa',

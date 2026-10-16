@@ -5,6 +5,8 @@ import { MobileBar } from '../components/layout/MobileBar'
 import { Sidebar } from '../components/layout/Sidebar'
 import { StepHero } from '../components/layout/StepHero'
 import { StepPager } from '../components/layout/StepPager'
+import { SiteFooter } from '../components/layout/SiteFooter'
+import { AffiliateNote } from '../components/ui/AffiliateNote'
 import { Icon } from '../components/ui/Icon'
 import { getGuide } from '../data/guides'
 import { strings } from '../lib/strings'
@@ -20,8 +22,7 @@ export function GuidePage() {
 
   useEffect(() => {
     window.scrollTo({ top: 0 })
-    if (guide && step) document.title = `${step.title} | ${guide.title}`
-  }, [guide, step])
+  }, [step])
 
   // Arrow-key navigation: right goes forward, left goes back.
   useEffect(() => {
@@ -50,6 +51,7 @@ export function GuidePage() {
         <main className="mx-auto max-w-3xl px-4 py-6 md:px-8 md:py-10">
           <article key={step.id} className="animate-fade-in">
             <StepHero step={step} index={activeIndex} />
+            {step.affiliateLinks && <AffiliateNote className="-mt-4 mb-6" />}
             <BlockList blocks={step.blocks} />
           </article>
 
@@ -59,6 +61,7 @@ export function GuidePage() {
             <Icon name="heart" size={13} className="mt-0.5 shrink-0 text-rose-400" />
             {guide.disclaimer ?? strings.defaultDisclaimer}
           </footer>
+          <SiteFooter className="mt-8" />
         </main>
       </div>
     </div>

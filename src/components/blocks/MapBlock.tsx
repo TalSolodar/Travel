@@ -18,6 +18,9 @@ export function MapBlock({ block }: { block: MapBlockData }) {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const [wide, setWide] = useState(true)
   const [activeId, setActiveId] = useState<string | null>(null)
+  // MapLibre needs a browser, so the map mounts only on the client (pre-rendered HTML shows the placeholder).
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
 
   // Fetch the map code, region shapes and map style in parallel rather than one after another.
   useEffect(() => {
@@ -57,16 +60,20 @@ export function MapBlock({ block }: { block: MapBlockData }) {
       )}
 
       <div ref={wrapperRef} className="relative h-[30rem] bg-slate-100 sm:h-[34rem]" dir="ltr">
-        <Suspense fallback={<div className="size-full animate-pulse bg-slate-100" />}>
-          <RegionMap
-            geo={block.geo}
-            countryCode={block.countryCode}
-            regions={block.regions}
-            activeId={shownId}
-            onActiveChange={setActiveId}
-            showCards={wide}
-          />
-        </Suspense>
+        {mounted ? (
+          <Suspense fallback={<MapPlaceholder />}>
+            <RegionMap
+              geo={block.geo}
+              countryCode={block.countryCode}
+              regions={block.regions}
+              activeId={shownId}
+              onActiveChange={setActiveId}
+              showCards={wide}
+            />
+          </Suspense>
+        ) : (
+          <MapPlaceholder />
+        )}
 
         {!wide && shownRegion && (
           // Overlaid on the map, on the side away from the selected region so it never hides it.
@@ -99,6 +106,10 @@ export function MapBlock({ block }: { block: MapBlockData }) {
       </div>
     </Card>
   )
+}
+
+function MapPlaceholder() {
+  return <div className="size-full animate-pulse bg-slate-100" />
 }
 
 /** Whether the region's pin lies south of the average pin, i.e. in the lower part of the map. */

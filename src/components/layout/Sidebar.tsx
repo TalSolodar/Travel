@@ -25,12 +25,12 @@ export function Sidebar({ guide, activeIndex }: SidebarProps) {
             {strings.allGuides}
           </Link>
         )}
-        <h1 className="flex items-center gap-2.5 text-2xl font-extrabold text-slate-900">
+        <p className="flex items-center gap-2.5 text-2xl font-extrabold text-slate-900">
           <span className="flex size-10 items-center justify-center rounded-xl bg-brand-600 text-white">
             <Icon name={guide.icon} size={20} />
           </span>
           {guide.title}
-        </h1>
+        </p>
         <p className="mt-2 text-sm text-slate-500">{guide.tagline}</p>
 
         <div className="mt-5">

@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { SiteFooter } from '../components/layout/SiteFooter'
 import { Icon } from '../components/ui/Icon'
 import { SmartImage } from '../components/ui/SmartImage'
 import { guides } from '../data/guides'
@@ -8,10 +8,6 @@ import { themeStyle } from '../lib/themes'
 import type { Guide } from '../types/guide'
 
 export function HomePage() {
-  useEffect(() => {
-    document.title = strings.siteName
-  }, [])
-
   return (
     <div className="min-h-dvh bg-slate-50">
       <header className="bg-gradient-to-br from-brand-700 via-brand-600 to-sky-700 px-4 pb-24 pt-16 text-white">
@@ -33,6 +29,7 @@ export function HomePage() {
             <GuideCard key={guide.slug} guide={guide} />
           ))}
         </div>
+        <SiteFooter className="mt-16" />
       </main>
     </div>
   )
@@ -41,14 +38,14 @@ export function HomePage() {
 function GuideCard({ guide }: { guide: Guide }) {
   return (
     <Link
-      to={`/${guide.slug}`}
+      to={`/${guide.slug}/${guide.steps[0].id}`}
       style={themeStyle(guide.theme)}
       className="group flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
     >
       <div className="relative h-48 overflow-hidden">
         <SmartImage
           src={guide.coverImage}
-          alt={guide.country}
+          alt={`${guide.country} travel guide cover photo`}
           className="size-full transition-transform duration-700 group-hover:scale-105"
         />
         <span className="absolute start-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-slate-800 backdrop-blur">

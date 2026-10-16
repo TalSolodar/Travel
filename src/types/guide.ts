@@ -267,6 +267,10 @@ export interface Step {
   id: string
   /** Set to false to hide the step without deleting it. Defaults to true. */
   display?: boolean
+  /** Search-engine title (max ~60 chars) and description (max ~155 chars). Falls back to title/subtitle. */
+  seo?: { title: string; description: string }
+  /** Shows the affiliate disclosure note at the top of the step. */
+  affiliateLinks?: boolean
   icon: IconName
   title: string
   subtitle: string

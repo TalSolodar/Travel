@@ -110,6 +110,20 @@ For another country, copy the script, change the province-to-region mapping, and
 
 External links open in a new tab with `rel="sponsored noopener noreferrer"`. The links in `vietnam.ts` are still `#` placeholders; replace them with your real affiliate URLs.
 
-## Deployment note
+## SEO and pre-rendering
 
-The app uses browser routing (`/vietnam/hanoi`), so the host must rewrite unknown paths to `index.html`. Netlify, Vercel and Cloudflare Pages support this; on GitHub Pages, switch to `HashRouter` in `src/App.tsx`.
+`npm run build` outputs fully pre-rendered static HTML, so every page's text is in the HTML even without JavaScript. React then hydrates on top for the interactive parts.
+
+1. `vite build` builds the browser app into `dist/`.
+2. `vite build --ssr src/entry-server.tsx` builds a small Node renderer into `dist-ssr/`.
+3. `scripts/prerender.mjs` renders every route to `dist/<path>.html` and writes `404.html`, `sitemap.xml` and `robots.txt`. It fails the build if a title or description is too long or duplicated, or a page doesn't have exactly one `<h1>`.
+
+- **Site URL:** set the `SITE_URL` environment variable (default in `src/config/site.ts`). Canonicals, Open Graph URLs, the sitemap and robots.txt all use it.
+- **Page titles and descriptions:** guide steps take them from the step's `seo` field (falling back to its title and subtitle); other pages are in `staticPages` in `src/lib/seo.ts`.
+- **New routes** come from the guide data, so new guides and steps are pre-rendered and added to the sitemap automatically. For a new non-guide page, add a `<Route>` in `src/App.tsx` and an entry in `staticPages`.
+- **Affiliate note:** set `affiliateLinks: true` on a step, or place `<AffiliateNote />` from `src/components/ui/AffiliateNote.tsx`.
+- **Maps** need a browser, so the pre-rendered HTML shows a placeholder until the map loads.
+
+## Deployment
+
+`vercel.json` uses `cleanUrls`, so `/vietnam/weather` serves `vietnam/weather.html`, and unknown URLs get `404.html` with a real 404 status. There is no catch-all rewrite.
