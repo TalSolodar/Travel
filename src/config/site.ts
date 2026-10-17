@@ -8,6 +8,6 @@ export const SITE_URL = (import.meta.env.SITE_URL || 'https://travel-tau-three-5
 
 /** The brand name, per language. Used in titles, og:site_name, the header, the footer and the text pages. */
 export const SITE_NAME: Record<Locale, string> = {
-  en: 'No Hassle Travel',
+  en: 'No Hassle Trips',
   he: 'לטייל, בתכלס',
 }
