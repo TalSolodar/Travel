@@ -326,7 +326,7 @@ export const vietnam: Guide = {
                   icon: 'fast',
                   title: 'Skip the wait with VIP Fast Track',
                   text: 'Book online in advance, and a staff member will be waiting for you with a **nameboard at passport control**.',
-                  link: { label: 'Book fast track in Hanoi', href: 'https://klook.tpx.li/n8ZJr6Et', icon: 'fast' },
+                  link: { label: 'Book fast track in Hanoi', href: 'https://klook.tpx.li/pYNPro9a', icon: 'fast' },
                 },
               ],
             },

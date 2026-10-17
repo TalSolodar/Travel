@@ -336,7 +336,7 @@ export const vietnam: Guide = {
                   icon: 'fast',
                   title: 'מדלגים על התור עם VIP Fast Track',
                   text: 'מזמינים מראש באינטרנט, ונציג יחכה לכם עם **שלט עם השם שלכם בביקורת הדרכונים**. ',
-                  link: { label: 'להזמנת פאסט טרק בהאנוי', href: 'https://klook.tpx.li/n8ZJr6Et', icon: 'fast' },
+                  link: { label: 'להזמנת פאסט טרק בהאנוי', href: 'https://klook.tpx.li/pYNPro9a', icon: 'fast' },
                 },
               ],
             },
