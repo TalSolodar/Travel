@@ -24,7 +24,7 @@ export interface PageMeta {
 type BaseMeta = Pick<PageMeta, 'title' | 'description' | 'type' | 'image'>
 
 /** Pages that don't come from guide data, per language. Paths are without the language prefix. */
-export const staticPagePaths = ['/', '/about', '/privacy', '/affiliate-disclosure'] as const
+export const staticPagePaths = ['/', '/privacy', '/affiliate-disclosure'] as const
 type StaticPath = (typeof staticPagePaths)[number]
 
 /** The home page's metadata is built from whichever countries are registered, so adding a guide updates it. */
@@ -40,10 +40,6 @@ function homeMeta(locale: Locale): BaseMeta {
 
 const staticMeta: Record<Locale, Record<Exclude<StaticPath, '/'>, BaseMeta>> = {
   en: {
-    '/about': {
-      title: `About ${SITE_NAME.en}: Who We Are`,
-      description: `Who is behind ${SITE_NAME.en}, how we research our step-by-step travel guides, and how the site is funded through affiliate links.`,
-    },
     '/privacy': {
       title: `Privacy Policy | ${SITE_NAME.en}`,
       description: `How ${SITE_NAME.en} handles your data: what we collect, how cookies and affiliate partners are used, and how to contact us.`,
@@ -54,10 +50,6 @@ const staticMeta: Record<Locale, Record<Exclude<StaticPath, '/'>, BaseMeta>> = {
     },
   },
   he: {
-    '/about': {
-      title: `אודות ״${SITE_NAME.he}״: מי אנחנו`,
-      description: `מי עומד מאחורי ״${SITE_NAME.he}״, איך אנחנו בונים את מדריכי הטיול צעד אחר צעד, ואיך האתר ממומן באמצעות קישורי שותפים.`,
-    },
     '/privacy': {
       title: `מדיניות פרטיות | ${SITE_NAME.he}`,
       description: `איך ״${SITE_NAME.he}״ מטפל במידע שלכם: מה נאסף, איך משתמשים בעוגיות ובשותפים עסקיים, ואיך יוצרים איתנו קשר.`,

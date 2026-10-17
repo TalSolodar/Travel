@@ -4,7 +4,6 @@ import { LocaleProvider } from './i18n/context'
 import { defaultLocale, isLocale, localePath, splitLocale } from './i18n/locales'
 import { getGuide } from './data/guides'
 import { applyHead, getPageMeta, notFoundMeta } from './lib/seo'
-import { AboutPage } from './pages/AboutPage'
 import { AffiliateDisclosurePage } from './pages/AffiliateDisclosurePage'
 import { GuidePage } from './pages/GuidePage'
 import { HomePage } from './pages/HomePage'
@@ -21,7 +20,8 @@ export function AppRoutes() {
         <Route path="/" element={<Navigate to={localePath(defaultLocale, '/')} replace />} />
         <Route path="/:lang" element={<LocaleLayout />}>
           <Route index element={<HomePage />} />
-          <Route path="about" element={<AboutPage />} />
+          {/* The About page was removed; Vercel redirects /<lang>/about to /<lang> (this covers the dev server). */}
+          <Route path="about" element={<Navigate to=".." replace />} />
           <Route path="privacy" element={<PrivacyPage />} />
           <Route path="affiliate-disclosure" element={<AffiliateDisclosurePage />} />
           <Route path=":guideSlug" element={<GuidePage />} />

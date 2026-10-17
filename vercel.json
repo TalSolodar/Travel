@@ -3,11 +3,45 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/", "destination": "/en", "permanent": false },
-    { "source": "/vietnam", "destination": "/en/vietnam", "permanent": true },
-    { "source": "/vietnam/:step", "destination": "/en/vietnam/:step", "permanent": true },
-    { "source": "/about", "destination": "/en/about", "permanent": true },
-    { "source": "/privacy", "destination": "/en/privacy", "permanent": true },
-    { "source": "/affiliate-disclosure", "destination": "/en/affiliate-disclosure", "permanent": true }
+    {
+      "source": "/",
+      "destination": "/en",
+      "permanent": false
+    },
+    {
+      "source": "/vietnam",
+      "destination": "/en/vietnam",
+      "permanent": true
+    },
+    {
+      "source": "/vietnam/:step",
+      "destination": "/en/vietnam/:step",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "/en/privacy",
+      "permanent": true
+    },
+    {
+      "source": "/affiliate-disclosure",
+      "destination": "/en/affiliate-disclosure",
+      "permanent": true
+    },
+    {
+      "source": "/en/about",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/he/about",
+      "destination": "/he",
+      "permanent": true
+    }
   ]
 }

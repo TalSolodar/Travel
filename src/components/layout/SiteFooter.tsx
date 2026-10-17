@@ -5,7 +5,6 @@ export function SiteFooter({ className = '' }: { className?: string }) {
   const { strings, href, siteName } = useLocale()
   const links = [
     { to: href('/'), label: strings.footerLinks.home },
-    { to: href('/about'), label: strings.footerLinks.about },
     { to: href('/privacy'), label: strings.footerLinks.privacy },
     { to: href('/affiliate-disclosure'), label: strings.footerLinks.affiliate },
   ]
