@@ -1,10 +1,14 @@
+import type { CSSProperties } from 'react'
 import type { FactsBlock as FactsBlockData } from '../../types/guide'
 import { Icon } from '../ui/Icon'
 
 export function FactsBlock({ block }: { block: FactsBlockData }) {
   return (
     // Phones: one row per fact. Wider: a row of tiles.
-    <dl className="divide-y divide-brand-100 rounded-2xl bg-brand-50 sm:grid sm:grid-cols-3 sm:gap-3 sm:divide-y-0 sm:bg-transparent">
+    <dl
+      className="divide-y divide-brand-100 rounded-2xl bg-brand-50 sm:grid sm:grid-cols-[repeat(var(--cols),minmax(0,1fr))] sm:gap-3 sm:divide-y-0 sm:bg-transparent"
+      style={{ '--cols': block.items.length } as CSSProperties}
+    >
       {block.items.map((fact) => (
         <div
           key={fact.label}

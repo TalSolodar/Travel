@@ -321,7 +321,6 @@ export const vietnam: Guide = {
                   items: [
                     { icon: 'clock', label: 'תור רגיל', value: 'שעה+' },
                     { icon: 'fast', label: 'עם פאסט טרק', value: 'דקות' },
-                    { icon: 'money', label: 'מחיר', value: 'בערך [PRICE] דולר לאדם' },
                   ],
                 },
                 {
@@ -338,7 +337,7 @@ export const vietnam: Guide = {
                   tone: 'brand',
                   icon: 'fast',
                   title: 'מדלגים על התור עם VIP Fast Track',
-                  text: 'מזמינים מראש באינטרנט, ונציג יחכה לכם עם **שלט עם השם שלכם בביקורת הדרכונים**. **בערך [PRICE] דולר לאדם.**',
+                  text: 'מזמינים מראש באינטרנט, ונציג יחכה לכם עם **שלט עם השם שלכם בביקורת הדרכונים**. ',
                   link: { label: 'להזמנת פאסט טרק בהאנוי', href: 'https://klook.tpx.li/n8ZJr6Et', icon: 'fast' },
                 },
               ],

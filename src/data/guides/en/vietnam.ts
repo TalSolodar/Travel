@@ -311,7 +311,6 @@ export const vietnam: Guide = {
                   items: [
                     { icon: 'clock', label: 'Regular queue', value: '1 hour+' },
                     { icon: 'fast', label: 'With fast track', value: 'Minutes' },
-                    { icon: 'money', label: 'Price', value: 'Around $[PRICE] per person' },
                   ],
                 },
                 {
@@ -328,7 +327,7 @@ export const vietnam: Guide = {
                   tone: 'brand',
                   icon: 'fast',
                   title: 'Skip the wait with VIP Fast Track',
-                  text: 'Book online in advance, and a staff member will be waiting for you with a **nameboard at passport control**. **Around $[PRICE] per person.**',
+                  text: 'Book online in advance, and a staff member will be waiting for you with a **nameboard at passport control**.',
                   link: { label: 'Book fast track in Hanoi', href: 'https://klook.tpx.li/n8ZJr6Et', icon: 'fast' },
                 },
               ],
