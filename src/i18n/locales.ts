@@ -11,7 +11,7 @@ export const localeInfo: Record<Locale, { label: string; short: string; dir: 'lt
 
 export const isLocale = (value: string | undefined): value is Locale => locales.includes(value as Locale)
 
-/** "/privacy" in Hebrew → "/he/privacy"; "/" → "/he". */
+/** "/privacy-and-disclosure" in Hebrew → "/he/privacy-and-disclosure"; "/" → "/he". */
 export const localePath = (locale: Locale, path: string) => `/${locale}${path === '/' ? '' : path}`
 
 /** Splits "/he/vietnam/weather" into { locale: "he", rest: "/vietnam/weather" }. */

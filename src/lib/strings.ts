@@ -36,7 +36,7 @@ export interface UiStrings {
   bestTime: string
   defaultDisclaimer: string
   footerNav: string
-  footerLinks: { home: string; privacy: string; affiliate: string }
+  footerLinks: { home: string; privacyAndDisclosure: string }
   affiliateNote: string
   affiliateNoteLink: string
 }
@@ -88,7 +88,7 @@ export const uiStrings: Record<Locale, UiStrings> = {
     defaultDisclaimer:
       'We started with what matters most: the weather. Itineraries, hotels and getting around are coming soon. Stay tuned!',
     footerNav: 'Site',
-    footerLinks: { home: 'Home', privacy: 'Privacy policy', affiliate: 'Affiliate disclosure' },
+    footerLinks: { home: 'Home', privacyAndDisclosure: 'Privacy & affiliate disclosure' },
     affiliateNote:
       'Some links on this page are affiliate links. If you book through them, we may earn a small commission at no extra cost to you.',
     affiliateNoteLink: 'Read our affiliate disclosure',
@@ -125,7 +125,7 @@ export const uiStrings: Record<Locale, UiStrings> = {
     bestTime: 'הזמן הכי טוב לבקר',
     defaultDisclaimer: 'התחלנו עם הכי חשוב: מזג האוויר והכנות לטיסה. מסלולים, מלונות ודרכי הגעה יעלו בקרוב. יש למה לחכות!',
     footerNav: 'האתר',
-    footerLinks: { home: 'דף הבית', privacy: 'מדיניות פרטיות', affiliate: 'גילוי נאות: קישורי שותפים' },
+    footerLinks: { home: 'דף הבית', privacyAndDisclosure: 'פרטיות וגילוי נאות' },
     affiliateNote:
       'חלק מהקישורים בעמוד הם קישורי שותפים. אם תזמינו דרכם, ייתכן שנקבל עמלה קטנה, בלי שום עלות נוספת עבורכם.',
     affiliateNoteLink: 'לגילוי הנאות המלא',

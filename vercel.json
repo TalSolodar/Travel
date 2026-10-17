@@ -25,12 +25,12 @@
     },
     {
       "source": "/privacy",
-      "destination": "/en/privacy",
+      "destination": "/en/privacy-and-disclosure",
       "permanent": true
     },
     {
       "source": "/affiliate-disclosure",
-      "destination": "/en/affiliate-disclosure",
+      "destination": "/en/privacy-and-disclosure",
       "permanent": true
     },
     {
@@ -41,6 +41,26 @@
     {
       "source": "/he/about",
       "destination": "/he",
+      "permanent": true
+    },
+    {
+      "source": "/en/privacy",
+      "destination": "/en/privacy-and-disclosure",
+      "permanent": true
+    },
+    {
+      "source": "/en/affiliate-disclosure",
+      "destination": "/en/privacy-and-disclosure",
+      "permanent": true
+    },
+    {
+      "source": "/he/privacy",
+      "destination": "/he/privacy-and-disclosure",
+      "permanent": true
+    },
+    {
+      "source": "/he/affiliate-disclosure",
+      "destination": "/he/privacy-and-disclosure",
       "permanent": true
     }
   ]

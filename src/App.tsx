@@ -4,11 +4,10 @@ import { LocaleProvider } from './i18n/context'
 import { defaultLocale, isLocale, localePath, splitLocale } from './i18n/locales'
 import { getGuide } from './data/guides'
 import { applyHead, getPageMeta, notFoundMeta } from './lib/seo'
-import { AffiliateDisclosurePage } from './pages/AffiliateDisclosurePage'
 import { GuidePage } from './pages/GuidePage'
 import { HomePage } from './pages/HomePage'
 import { NotFoundPage } from './pages/NotFoundPage'
-import { PrivacyPage } from './pages/PrivacyPage'
+import { PrivacyAndDisclosurePage } from './pages/PrivacyAndDisclosurePage'
 
 /** The route table, shared by the browser app and the build-time pre-renderer. Every page lives under /en or /he. */
 export function AppRoutes() {
@@ -20,10 +19,11 @@ export function AppRoutes() {
         <Route path="/" element={<Navigate to={localePath(defaultLocale, '/')} replace />} />
         <Route path="/:lang" element={<LocaleLayout />}>
           <Route index element={<HomePage />} />
-          {/* The About page was removed; Vercel redirects /<lang>/about to /<lang> (this covers the dev server). */}
+          <Route path="privacy-and-disclosure" element={<PrivacyAndDisclosurePage />} />
+          {/* Removed / merged pages. Vercel redirects these (vercel.json); these routes cover the dev server. */}
           <Route path="about" element={<Navigate to=".." replace />} />
-          <Route path="privacy" element={<PrivacyPage />} />
-          <Route path="affiliate-disclosure" element={<AffiliateDisclosurePage />} />
+          <Route path="privacy" element={<Navigate to="../privacy-and-disclosure" replace />} />
+          <Route path="affiliate-disclosure" element={<Navigate to="../privacy-and-disclosure" replace />} />
           <Route path=":guideSlug" element={<GuidePage />} />
           <Route path=":guideSlug/:stepId" element={<GuidePage />} />
           <Route path="*" element={<NotFoundPage />} />

@@ -24,7 +24,7 @@ export interface PageMeta {
 type BaseMeta = Pick<PageMeta, 'title' | 'description' | 'type' | 'image'>
 
 /** Pages that don't come from guide data, per language. Paths are without the language prefix. */
-export const staticPagePaths = ['/', '/privacy', '/affiliate-disclosure'] as const
+export const staticPagePaths = ['/', '/privacy-and-disclosure'] as const
 type StaticPath = (typeof staticPagePaths)[number]
 
 /** The home page's metadata is built from whichever countries are registered, so adding a guide updates it. */
@@ -40,23 +40,15 @@ function homeMeta(locale: Locale): BaseMeta {
 
 const staticMeta: Record<Locale, Record<Exclude<StaticPath, '/'>, BaseMeta>> = {
   en: {
-    '/privacy': {
-      title: `Privacy Policy | ${SITE_NAME.en}`,
-      description: `How ${SITE_NAME.en} handles your data: what we collect, how cookies and affiliate partners are used, and how to contact us.`,
-    },
-    '/affiliate-disclosure': {
-      title: `Affiliate Disclosure | ${SITE_NAME.en}`,
-      description: `Some links on ${SITE_NAME.en} are affiliate links. Learn how they work, which partners we use, and why they never cost you extra.`,
+    '/privacy-and-disclosure': {
+      title: `Privacy & Affiliate Disclosure | ${SITE_NAME.en}`,
+      description: `How ${SITE_NAME.en} uses affiliate links and handles your data: the partners we work with, how cookies are used, and how to contact us.`,
     },
   },
   he: {
-    '/privacy': {
-      title: `מדיניות פרטיות | ${SITE_NAME.he}`,
-      description: `איך ״${SITE_NAME.he}״ מטפל במידע שלכם: מה נאסף, איך משתמשים בעוגיות ובשותפים עסקיים, ואיך יוצרים איתנו קשר.`,
-    },
-    '/affiliate-disclosure': {
-      title: `גילוי נאות: קישורי שותפים | ${SITE_NAME.he}`,
-      description: `חלק מהקישורים ב״${SITE_NAME.he}״ הם קישורי שותפים. כאן מוסבר איך הם עובדים, עם מי אנחנו עובדים, ולמה הם אף פעם לא עולים לכם יותר.`,
+    '/privacy-and-disclosure': {
+      title: `פרטיות וגילוי נאות | ${SITE_NAME.he}`,
+      description: `איך ״${SITE_NAME.he}״ משתמש בקישורי שותפים ומטפל במידע שלכם: עם מי אנחנו עובדים, איך משתמשים בעוגיות ואיך יוצרים איתנו קשר.`,
     },
   },
 }

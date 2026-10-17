@@ -5,8 +5,7 @@ export function SiteFooter({ className = '' }: { className?: string }) {
   const { strings, href, siteName } = useLocale()
   const links = [
     { to: href('/'), label: strings.footerLinks.home },
-    { to: href('/privacy'), label: strings.footerLinks.privacy },
-    { to: href('/affiliate-disclosure'), label: strings.footerLinks.affiliate },
+    { to: href('/privacy-and-disclosure'), label: strings.footerLinks.privacyAndDisclosure },
   ]
   return (
     <footer className={`border-t border-slate-200 pt-6 text-center text-xs text-slate-500 ${className}`}>

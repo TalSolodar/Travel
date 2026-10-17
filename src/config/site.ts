@@ -12,5 +12,5 @@ export const SITE_NAME: Record<Locale, string> = {
   he: 'לטייל, בתכלס',
 }
 
-/** Shown on the Privacy and Affiliate Disclosure pages. */
+/** Shown on the Privacy & Affiliate Disclosure page. */
 export const CONTACT_EMAIL = 'hello@example.com'
