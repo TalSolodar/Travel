@@ -300,14 +300,27 @@ export const vietnam: Guide = {
               details: [
                 {
                   type: 'paragraph',
-                  text: "Immigration lines at Vietnam's main airports, especially in **Hanoi and Ho Chi Minh City**, can be notoriously long. If you are arriving on an international flight during peak evening hours, you could easily end up waiting in line for **almost 3 hours**.",
+                  text: '**What is fast track?** A paid airport service: a staff member meets you as you get off the plane and takes you through passport control in a dedicated lane, so you skip the regular queue. You then collect your bags and exit as usual.',
+                },
+                {
+                  type: 'paragraph',
+                  text: '**Why it matters in Vietnam:** Immigration queues at Hanoi and Ho Chi Minh City airports can be very long, especially for evening arrivals: **often an hour or more, longer at peak times**.',
                 },
                 {
                   type: 'facts',
                   items: [
-                    { icon: 'clock', label: 'Peak-hour wait', value: 'Up to 3 hours' },
+                    { icon: 'clock', label: 'Regular queue', value: '1 hour+' },
                     { icon: 'fast', label: 'With fast track', value: 'Minutes' },
-                    { icon: 'money', label: 'Early bird', value: 'Book 1+ week ahead' },
+                    { icon: 'money', label: 'Price', value: 'Around $[PRICE] per person' },
+                  ],
+                },
+                {
+                  type: 'list',
+                  tone: 'brand',
+                  title: 'Is it worth it?',
+                  items: [
+                    '**Worth it if:** you land in the evening, travel with kids, or arrive after a long flight with a connection.',
+                    "**Less worth it if:** you land in the morning and aren't in a rush.",
                   ],
                 },
                 {
@@ -315,8 +328,8 @@ export const vietnam: Guide = {
                   tone: 'brand',
                   icon: 'fast',
                   title: 'Skip the wait with VIP Fast Track',
-                  text: "A representative will greet you with a **nameboard at passport control** and escort you through a priority lane in minutes. It's relatively inexpensive in Vietnam, so it's absolutely worth booking online in advance. Book **at least a week before** your arrival and you can often snag an **early bird discount**, saving you both money and precious vacation time.",
-                  link: { label: 'Our recommended fast track in Hanoi', href: 'https://klook.tpx.li/n8ZJr6Et', icon: 'fast' },
+                  text: 'Book online in advance, and a staff member will be waiting for you with a **nameboard at passport control**. **Around $[PRICE] per person.**',
+                  link: { label: 'Book fast track in Hanoi', href: 'https://klook.tpx.li/n8ZJr6Et', icon: 'fast' },
                 },
               ],
             },
