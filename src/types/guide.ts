@@ -294,7 +294,8 @@ export interface Guide {
   /** The guide's hub page (/<lang>/<slug>): its H1, intro text and search metadata. */
   hub: {
     heading: string
-    intro: RichText
+    /** Optional paragraph under the H1. */
+    intro?: RichText
     seo: SeoFields
   }
   coverImage: string

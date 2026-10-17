@@ -22,9 +22,11 @@ export function GuideHubPage({ guide }: { guide: Guide }) {
             {guide.title}
           </p>
           <h1 className="max-w-3xl text-4xl leading-tight font-extrabold md:text-5xl">{guide.hub.heading}</h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/90 md:text-lg">
-            <RichText text={guide.hub.intro} />
-          </p>
+          {guide.hub.intro && (
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/90 md:text-lg">
+              <RichText text={guide.hub.intro} />
+            </p>
+          )}
         </div>
       </section>
 

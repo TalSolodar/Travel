@@ -13,8 +13,6 @@ export const vietnam: Guide = {
     'When to go, region by region, and everything to sort out before you fly: vaccines, the e-visa, airport fast track, the arrival card and money.',
   hub: {
     heading: 'Vietnam Travel Guide: Plan Your Trip Step by Step',
-    intro:
-      'Vietnam stretches almost 1,650 km from the misty mountains of Sapa to the beaches of Phu Quoc, so a good trip starts with good planning. Our practical guides walk you through it **step by step**: when to go, what to sort out before you fly, and how to handle money once you land.',
     seo: {
       title: 'Vietnam Travel Guide: Plan Your Trip Step by Step',
       description:
