@@ -2,8 +2,8 @@ import { StaticPageLayout } from '../components/layout/StaticPageLayout'
 import { useLocale } from '../i18n/context'
 
 // Privacy & transparency page, one version per language.
-// Keep "Third-party services" in sync with what the site actually loads: today the Travelpayouts script
-// (index.html), OpenFreeMap map tiles (map block) and Unsplash images (guide cover photos).
+// Keep "Third-party services" in sync with what the site actually loads: today OpenFreeMap map tiles
+// (map block) and Unsplash images (guide cover photos). Affiliate links (klook.tpx.li) load nothing until clicked.
 export function PrivacyAndDisclosurePage() {
   const { locale } = useLocale()
 
@@ -37,8 +37,8 @@ export function PrivacyAndDisclosurePage() {
           הדפדפן.
         </p>
         <p>
-          <strong>שירותי צד שלישי:</strong> כל עמוד טוען סקריפט של Travelpayouts (רשת השותפים שלנו). עמוד מזג האוויר
-          טוען מפה מ-OpenFreeMap, וחלק מהעמודים טוענים תמונות מ-Unsplash. השירותים האלה עשויים לקבל את כתובת ה-IP שלכם
+          <strong>שירותי צד שלישי:</strong> עמוד מזג האוויר טוען מפה מ-OpenFreeMap, וחלק מהעמודים טוענים תמונות
+          מ-Unsplash. השירותים האלה עשויים לקבל את כתובת ה-IP שלכם
           כשהם נטענים.
         </p>
         <p>
@@ -84,8 +84,8 @@ export function PrivacyAndDisclosurePage() {
         applies. You can block or delete cookies in your browser settings.
       </p>
       <p>
-        <strong>Third-party services:</strong> Every page loads a script from Travelpayouts, our affiliate network. The
-        weather page loads a map from OpenFreeMap, and some pages load images from Unsplash. These services may receive
+        <strong>Third-party services:</strong> The weather page loads a map from OpenFreeMap, and some pages load images
+        from Unsplash. These services may receive
         your IP address when they load.
       </p>
       <p>
