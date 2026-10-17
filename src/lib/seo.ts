@@ -41,14 +41,14 @@ function homeMeta(locale: Locale): BaseMeta {
 const staticMeta: Record<Locale, Record<Exclude<StaticPath, '/'>, BaseMeta>> = {
   en: {
     '/privacy-and-disclosure': {
-      title: `Privacy & Affiliate Disclosure | ${SITE_NAME.en}`,
-      description: `How ${SITE_NAME.en} uses affiliate links and handles your data: the partners we work with, how cookies are used, and how to contact us.`,
+      title: `Privacy & Transparency | ${SITE_NAME.en}`,
+      description: `How ${SITE_NAME.en} is funded through affiliate links, what the information on the site is (and isn't), and how we handle your privacy.`,
     },
   },
   he: {
     '/privacy-and-disclosure': {
-      title: `פרטיות וגילוי נאות | ${SITE_NAME.he}`,
-      description: `איך ״${SITE_NAME.he}״ משתמש בקישורי שותפים ומטפל במידע שלכם: עם מי אנחנו עובדים, איך משתמשים בעוגיות ואיך יוצרים איתנו קשר.`,
+      title: `פרטיות ושקיפות | ${SITE_NAME.he}`,
+      description: `איך ״${SITE_NAME.he}״ מתממן מקישורי שותפים, מה המידע באתר (ומה הוא לא), ואיך אנחנו שומרים על הפרטיות שלכם.`,
     },
   },
 }

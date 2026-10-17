@@ -9,7 +9,7 @@ interface StaticPageLayoutProps {
   children: ReactNode
 }
 
-/** Simple text page (e.g. Privacy & Affiliate Disclosure): site header, one H1, readable body, footer. */
+/** Simple text page (e.g. Privacy & Transparency): site header, one H1, readable body, footer. */
 export function StaticPageLayout({ title, intro, children }: StaticPageLayoutProps) {
   return (
     <div className="min-h-dvh bg-slate-50">

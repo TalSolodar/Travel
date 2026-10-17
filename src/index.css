@@ -1,7 +1,9 @@
+/* Heebo is self-hosted (bundled from @fontsource), so pages make no request to Google Fonts. */
+@import '@fontsource-variable/heebo';
 @import 'tailwindcss';
 
 @theme {
-  --font-sans: 'Heebo', system-ui, sans-serif;
+  --font-sans: 'Heebo Variable', system-ui, sans-serif;
 
   /* Default brand palette; each guide can override it via `theme`. */
   --color-brand-50: #ecfdf5;

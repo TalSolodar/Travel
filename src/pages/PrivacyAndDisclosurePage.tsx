@@ -1,109 +1,100 @@
 import { StaticPageLayout } from '../components/layout/StaticPageLayout'
-import { CONTACT_EMAIL } from '../config/site'
 import { useLocale } from '../i18n/context'
 
-// Placeholder copy, one version per language: review it (ideally with a professional) before relying on it.
-// The affiliate disclosure comes first; cookies (including affiliate tracking) are explained once, under Cookies.
+// Privacy & transparency page, one version per language.
+// Keep "Third-party services" in sync with what the site actually loads: today the Travelpayouts script
+// (index.html), OpenFreeMap map tiles (map block) and Unsplash images (guide cover photos).
 export function PrivacyAndDisclosurePage() {
-  const { locale, siteName } = useLocale()
-  const email = <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+  const { locale } = useLocale()
 
   if (locale === 'he') {
     return (
-      <StaticPageLayout title="פרטיות וגילוי נאות" intro="עודכן לאחרונה: אוקטובר 2026">
-        <h2 id="affiliate-disclosure">גילוי נאות: קישורי שותפים</h2>
+      <StaticPageLayout title="פרטיות ושקיפות" intro="עודכן לאחרונה: אוקטובר 2026">
+        <h2 id="affiliate-disclosure">איך האתר מתממן</h2>
         <p>
-          ״{siteName}״ נתמך על ידי הקוראים. חלק מהקישורים באתר הם <strong>קישורי שותפים</strong>: אם תלחצו על אחד מהם
-          ותבצעו הזמנה, ייתכן שנקבל עמלה קטנה. <strong>זה אף פעם לא עולה לכם יותר</strong>: המחיר זהה, בין אם תשתמשו
-          בקישור שלנו ובין אם תגיעו לאתר ישירות.
+          האתר חינמי, והוא מתממן מקישורי שותפים. אם תלחצו על קישור כזה ותזמינו, נקבל עמלה קטנה. אתם לא משלמים שקל
+          יותר: המחיר זהה, בין אם תזמינו דרכנו ובין אם תגיעו לאתר ישירות.
         </p>
         <p>
-          אנחנו עובדים עם רשת השותפים Travelpayouts, והשותף היחיד שלנו כרגע הוא Klook. שותפים
-          לא משלמים על מקום, ועמלה אף פעם לא קובעת מה נמליץ. איך השותפים עוקבים אחרי הזמנות מוסבר ב
-          <a href="#cookies">עוגיות</a>.
+          אנחנו עובדים עם רשת השותפים Travelpayouts, ובינתיים השותף היחיד שלנו הוא Klook. שותפים לא משלמים כדי להופיע
+          באתר, ועמלה לא קובעת מה נמליץ.
         </p>
 
-        <h2 id="privacy">מדיניות פרטיות</h2>
-        <p>החלק הזה מסביר איזה מידע ״{siteName}״ אוסף כשאתם גולשים באתר, ואיך משתמשים בו.</p>
-        <h3>מידע שאנחנו אוספים</h3>
+        <h2>המידע באתר</h2>
         <p>
-          אנחנו לא מבקשים לפתוח חשבון או למסור פרטים אישיים. כמו ברוב האתרים, ספק האחסון שלנו עשוי לתעד מידע טכני בסיסי
-          כמו כתובת IP, סוג הדפדפן והעמודים שבהם ביקרתם, לצורכי אבטחה וביצועים.
+          המידע באתר כללי ומבוסס על הניסיון והבדיקה שלנו. הוא לא מהווה ייעוץ רפואי, משפטי או מקצועי. חוקים, מחירים
+          ודרישות כניסה משתנים, אז תמיד בדקו מול המקורות הרשמיים לפני הטיסה.
         </p>
-        <h3 id="cookies">עוגיות (Cookies)</h3>
-        <p>עוגיות הן קבצים קטנים שנשמרים בדפדפן. האתר והשותפים שלו עשויים להשתמש בהן כדי:</p>
-        <ul>
-          <li>לזכור העדפות ולשמור על פעילות תקינה של האתר;</li>
-          <li>למדוד איך משתמשים באתר, כדי שנוכל לשפר אותו;</li>
-          <li>
-            לעקוב אחרי הזמנות שבוצעו דרך קישורי השותפים שלנו: כשלוחצים על קישור כזה, האתר של השותף עשוי לשמור עוגייה
-            שמתעדת שהגעתם מאיתנו, כדי לזכות אותנו בעמלה.
-          </li>
-        </ul>
-        <p>
-          אפשר לחסום או למחוק עוגיות בהגדרות הדפדפן. ייתכן שחלק מהאפשרויות באתר לא יעבדו כמצופה בלעדיהן. מרגע שאתם באתר
-          של שותף, חלה מדיניות הפרטיות שלו.
-        </p>
-        <h3>שירותי צד שלישי</h3>
-        <p>אנחנו משתמשים בשירותי צד שלישי כדי להפעיל את האתר, כמו מפות וגופנים. השירותים האלה עשויים לקבל את כתובת ה-IP שלכם.</p>
-        <h3>הזכויות שלכם</h3>
-        <p>בהתאם למקום מגוריכם, ייתכן שיש לכם זכות לעיין במידע עליכם, לתקן אותו או למחוק אותו. פנו אלינו ונשמח לעזור.</p>
 
-        <h2>יצירת קשר</h2>
-        <p>שאלות על קישורי השותפים או על הפרטיות? כתבו לנו: {email}</p>
+        <h2 id="privacy">פרטיות</h2>
+        <p>
+          <strong>מידע שאנחנו אוספים:</strong> אנחנו לא מבקשים לפתוח חשבון או למסור פרטים אישיים. ספק האחסון שלנו,
+          Vercel, עשוי לתעד מידע טכני בסיסי כמו כתובת IP וסוג הדפדפן, לצורכי אבטחה וביצועים.
+        </p>
+        <p id="cookies">
+          <strong>עוגיות:</strong> האתר עצמו לא משתמש בעוגיות. כשלוחצים על קישור שותפים, האתר של השותף עשוי לשמור עוגייה
+          שמתעדת שהגעתם מאיתנו. מרגע שאתם באתר של שותף, חלה מדיניות הפרטיות שלו. אפשר לחסום או למחוק עוגיות בהגדרות
+          הדפדפן.
+        </p>
+        <p>
+          <strong>שירותי צד שלישי:</strong> כל עמוד טוען סקריפט של Travelpayouts (רשת השותפים שלנו). עמוד מזג האוויר
+          טוען מפה מ-OpenFreeMap, וחלק מהעמודים טוענים תמונות מ-Unsplash. השירותים האלה עשויים לקבל את כתובת ה-IP שלכם
+          כשהם נטענים.
+        </p>
+        <p>
+          <strong>הזכויות שלכם:</strong> בהתאם למקום מגוריכם, ייתכן שיש לכם זכות לעיין במידע עליכם, לתקן אותו או למחוק
+          אותו.
+        </p>
+        <p>
+          <strong>שינויים:</strong> אנחנו עשויים לעדכן את הדף הזה מדי פעם. התאריך למעלה מציין את העדכון האחרון.
+        </p>
       </StaticPageLayout>
     )
   }
 
   return (
-    <StaticPageLayout title="Privacy & Affiliate Disclosure" intro="Last updated: October 2026">
-      <h2 id="affiliate-disclosure">Affiliate disclosure</h2>
+    <StaticPageLayout title="Privacy & Transparency" intro="Last updated: October 2026">
+      <h2 id="affiliate-disclosure">How this site is funded</h2>
       <p>
-        {siteName} is reader-supported. Some links on this site are <strong>affiliate links</strong>: if you click one and
-        make a booking, we may earn a small commission. <strong>It never costs you extra</strong>: the price is the same
-        whether you use our link or go to the site directly.
+        This site is free, and it's funded by affiliate links. If you click one and make a booking, we earn a small
+        commission. You don't pay a cent more: the price is the same whether you book through us or go to the site
+        directly.
       </p>
       <p>
-        We work with the affiliate network Travelpayouts, and our only partner right now is Klook. Partners don't pay for
-        placement, and a commission never decides what we recommend. How partners track
-        bookings is explained under <a href="#cookies">Cookies</a>.
+        We work with the Travelpayouts affiliate network, and for now our only partner is Klook. Partners don't pay to be
+        featured, and commissions don't decide what we recommend.
       </p>
 
-      <h2 id="privacy">Privacy policy</h2>
-      <p>This section explains what information {siteName} collects when you visit the site, and how it is used.</p>
-      <h3>Information we collect</h3>
+      <h2>About the information here</h2>
       <p>
-        We don't ask you to create an account or submit personal details. Like most websites, our hosting provider may log
-        basic technical information such as your IP address, browser type and the pages you visit, for security and
+        The information on this site is general and based on our own experience and research. It isn't medical, legal or
+        professional advice. Rules, prices and entry requirements change, so always check official sources before you
+        travel.
+      </p>
+
+      <h2 id="privacy">Privacy</h2>
+      <p>
+        <strong>What we collect:</strong> We don't ask you to create an account or share personal details. Our hosting
+        provider, Vercel, may log basic technical data such as your IP address and browser type for security and
         performance.
       </p>
-      <h3 id="cookies">Cookies</h3>
-      <p>Cookies are small files stored in your browser. This site and its partners may use them to:</p>
-      <ul>
-        <li>remember your preferences and keep the site working properly;</li>
-        <li>measure how the site is used, so we can improve it;</li>
-        <li>
-          track bookings made through our affiliate links: when you click one, the partner's site may set a cookie
-          recording that you came from us, so it can credit us with a commission.
-        </li>
-      </ul>
-      <p>
-        You can block or delete cookies in your browser settings. Some features may not work as expected without them.
-        Once you are on a partner's site, their own privacy policy applies.
+      <p id="cookies">
+        <strong>Cookies:</strong> This site doesn't use cookies itself. When you click an affiliate link, the partner's
+        site may set a cookie to record that you came from us. Once you're on a partner's site, their privacy policy
+        applies. You can block or delete cookies in your browser settings.
       </p>
-      <h3>Third-party services</h3>
       <p>
-        We use third-party services to run the site, such as map tiles and web fonts. These services may receive your IP
-        address when they load.
+        <strong>Third-party services:</strong> Every page loads a script from Travelpayouts, our affiliate network. The
+        weather page loads a map from OpenFreeMap, and some pages load images from Unsplash. These services may receive
+        your IP address when they load.
       </p>
-      <h3>Your rights</h3>
       <p>
-        Depending on where you live, you may have the right to access, correct or delete personal data about you. Contact
-        us and we'll help.
+        <strong>Your rights:</strong> Depending on where you live, you may have the right to access, correct or delete
+        data about you.
       </p>
-
-      <h2>Contact us</h2>
-      <p>Questions about affiliate links or privacy? Email {email}.</p>
+      <p>
+        <strong>Changes:</strong> We may update this page from time to time. The date at the top shows the latest update.
+      </p>
     </StaticPageLayout>
   )
 }

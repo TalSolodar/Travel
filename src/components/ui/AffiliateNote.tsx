@@ -17,7 +17,7 @@ export function AffiliateNote({ className = '' }: { className?: string }) {
       <p>
         {strings.affiliateNote}{' '}
         <Link
-          to={href('/privacy-and-disclosure')}
+          to={href('/privacy-and-disclosure#affiliate-disclosure')}
           className="font-semibold text-slate-700 underline underline-offset-2 hover:text-brand-700"
         >
           {strings.affiliateNoteLink}
