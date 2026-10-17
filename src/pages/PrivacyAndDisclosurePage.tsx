@@ -18,7 +18,7 @@ export function PrivacyAndDisclosurePage() {
           בקישור שלנו ובין אם תגיעו לאתר ישירות.
         </p>
         <p>
-          אנחנו עובדים עם רשתות שותפים כמו Travelpayouts ועם שותפים כמו Klook ו-12Go, וגם עם אתרי הזמנת מלונות. שותפים
+          אנחנו עובדים עם רשת השותפים Travelpayouts, והשותף היחיד שלנו כרגע הוא Klook. שותפים
           לא משלמים על מקום, ועמלה אף פעם לא קובעת מה נמליץ. איך השותפים עוקבים אחרי הזמנות מוסבר ב
           <a href="#cookies">עוגיות</a>.
         </p>
@@ -64,8 +64,8 @@ export function PrivacyAndDisclosurePage() {
         whether you use our link or go to the site directly.
       </p>
       <p>
-        We work with affiliate networks such as Travelpayouts and partners such as Klook and 12Go, as well as hotel booking
-        sites. Partners don't pay for placement, and a commission never decides what we recommend. How partners track
+        We work with the affiliate network Travelpayouts, and our only partner right now is Klook. Partners don't pay for
+        placement, and a commission never decides what we recommend. How partners track
         bookings is explained under <a href="#cookies">Cookies</a>.
       </p>
 
