@@ -1,6 +1,7 @@
 import { SITE_NAME, SITE_URL } from '../config/site'
 import { getGuide, getGuides } from '../data/guides'
 import { defaultLocale, localeInfo, localePath, locales, splitLocale, type Locale } from '../i18n/locales'
+import { uiStrings } from './strings'
 
 /** Everything a page needs in its <head>. Adding a page means filling in these fields. */
 export interface PageMeta {
@@ -26,14 +27,19 @@ type BaseMeta = Pick<PageMeta, 'title' | 'description' | 'type' | 'image'>
 export const staticPagePaths = ['/', '/about', '/privacy', '/affiliate-disclosure'] as const
 type StaticPath = (typeof staticPagePaths)[number]
 
-const staticMeta: Record<Locale, Record<StaticPath, BaseMeta>> = {
+/** The home page's metadata is built from whichever countries are registered, so adding a guide updates it. */
+function homeMeta(locale: Locale): BaseMeta {
+  const guides = getGuides(locale)
+  const countries = guides.map((g) => g.country)
+  return {
+    title: uiStrings[locale].homeHeading(countries),
+    description: uiStrings[locale].homeDescription(countries),
+    image: guides[0]?.coverImage,
+  }
+}
+
+const staticMeta: Record<Locale, Record<Exclude<StaticPath, '/'>, BaseMeta>> = {
   en: {
-    '/': {
-      title: 'Vietnam Travel Guides: Weather, Visa & Practical Tips',
-      description:
-        'Practical, step-by-step travel guides. Plan your Vietnam trip: the best time to visit, e-visa, airport fast track, money tips and where to stay.',
-      image: '/images/vietnam.jpg',
-    },
     '/about': {
       title: `About ${SITE_NAME.en}: Who We Are`,
       description: `Who is behind ${SITE_NAME.en}, how we research our step-by-step travel guides, and how the site is funded through affiliate links.`,
@@ -48,12 +54,6 @@ const staticMeta: Record<Locale, Record<StaticPath, BaseMeta>> = {
     },
   },
   he: {
-    '/': {
-      title: 'מדריכי טיול לויאטנם: מזג אוויר, ויזה וטיפים מעשיים',
-      description:
-        'מדריכי טיול מעשיים צעד אחר צעד. מתכננים טיול לויאטנם? מתי הכי כדאי לטוס, ויזה אלקטרונית, פאסט טרק בשדה התעופה, טיפים לכסף ואיפה לישון.',
-      image: '/images/vietnam.jpg',
-    },
     '/about': {
       title: `אודות ״${SITE_NAME.he}״: מי אנחנו`,
       description: `מי עומד מאחורי ״${SITE_NAME.he}״, איך אנחנו בונים את מדריכי הטיול צעד אחר צעד, ואיך האתר ממומן באמצעות קישורי שותפים.`,
@@ -81,7 +81,8 @@ export const absoluteUrl = (pathOrUrl: string) => (/^https?:\/\//.test(pathOrUrl
 
 /** Metadata for a page in one language, by its path without the language prefix. */
 function resolve(locale: Locale, rest: string): BaseMeta | undefined {
-  if ((staticPagePaths as readonly string[]).includes(rest)) return staticMeta[locale][rest as StaticPath]
+  if (rest === '/') return homeMeta(locale)
+  if ((staticPagePaths as readonly string[]).includes(rest)) return staticMeta[locale][rest as Exclude<StaticPath, '/'>]
 
   const [slug, stepId, ...extra] = rest.slice(1).split('/')
   const guide = getGuide(locale, slug)

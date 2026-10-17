@@ -7,9 +7,10 @@ const unsplash = (id: string, w = 1200) =>
 export const vietnam: Guide = {
   slug: 'vietnam',
   country: 'Vietnam',
-  title: 'Vietnam, for real!',
+  title: 'No Hassle, Vietnam!',
   tagline: 'The practical guide',
-  description: 'Hanoi, Sapa, Ninh Binh and Ha Long Bay: when to go, where to stay and how to get between them.',
+  description:
+    'When to go, region by region, and everything to sort out before you fly: vaccines, the e-visa, airport fast track, the arrival card and money.',
   hub: {
     heading: 'Vietnam Travel Guide: Plan Your Trip Step by Step',
     intro:
@@ -321,21 +322,21 @@ export const vietnam: Guide = {
             },
             {
               id: 'arrival-card',
-              when: 'Just before you fly',
+              when: 'Within 72h before landing',
               title: 'Digital arrival card',
-              summary: 'Fill in the free online form before you land.',
+              summary: 'Fill in the free online form in the 72 hours before you land.',
               icon: 'qr',
               note: 'Free',
               details: [
                 {
                   type: 'paragraph',
-                  text: "All travelers must complete a **100% free** Digital Arrival Card. You can submit it **up to 72 hours before landing**, and it's highly recommended to finish it **before you take off**.",
+                  text: "All travelers must complete a **100% free** Digital Arrival Card. You can only fill it in **during the 72 hours before you land**, not earlier. It's highly recommended to finish it **before you take off**.",
                 },
                 {
                   type: 'facts',
                   items: [
                     { icon: 'money', label: 'Cost', value: 'Free' },
-                    { icon: 'clock', label: 'Submit', value: 'Up to 72h before' },
+                    { icon: 'clock', label: 'Submit', value: 'Within 72 hours before landing' },
                     { icon: 'plane', label: 'Best time', value: 'Before take-off' },
                   ],
                 },
@@ -379,13 +380,7 @@ export const vietnam: Guide = {
                     '**Where to exchange:** only use authorized banks or official money exchange counters.',
                     '**ATMs:** withdrawing cash is very convenient, but local bank fees add up quickly. We highly recommend downloading the **ATM Fee Saver** app to find nearby ATMs with zero or low withdrawal fees.',
                   ],
-                },
-                {
-                  type: 'callout',
-                  tone: 'danger',
-                  title: "Don't exchange at gold shops",
-                  text: 'Exchanging money at local gold and jewelry shops used to be a popular tourist hack, but it is **now illegal** and can result in heavy fines. Stick to the official spots.',
-                },
+                }
               ],
             },
           ],

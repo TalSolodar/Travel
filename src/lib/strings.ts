@@ -3,13 +3,14 @@ import type { Rating } from '../types/guide'
 
 /** All UI copy, per language, so components stay content-agnostic. The site name lives in config/site.ts. */
 export interface UiStrings {
-  /** The home page H1: descriptive and close to its SEO title. */
-  homeHeading: string
+  /** The home page H1, also used as its search title. Built from the registered countries, e.g. ["Vietnam", "Taiwan"]. */
+  homeHeading: (countries: string[]) => string
+  /** The home page's search description, built from the registered countries. */
+  homeDescription: (countries: string[]) => string
   siteTagline: string
-  chooseGuide: string
-  startGuide: string
   readGuide: string
-  stepsCount: (n: number) => string
+  /** Small link from a country's section on the home page to its hub page. */
+  countryHubLink: (country: string) => string
   stepLabel: (n: number) => string
   stepOf: (n: number, total: number) => string
   prev: string
@@ -40,14 +41,27 @@ export interface UiStrings {
   affiliateNoteLink: string
 }
 
+/** Uses the specific title while it fits in ~60 characters (search results cut longer ones), else the generic one. */
+const fitTitle = (specific: string, generic: string) => (specific.length <= 60 ? specific : generic)
+
+/** "Vietnam", "Vietnam and Taiwan", "Vietnam, Taiwan and Thailand". */
+const listEn = (items: string[]) =>
+  items.length <= 1 ? (items[0] ?? '') : `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}`
+
+/** "לויאטנם", "לויאטנם ולטייוואן", "לויאטנם, לטייוואן ולתאילנד". */
+const listHeTo = (items: string[]) => {
+  const to = items.map((c) => `ל${c}`)
+  return to.length <= 1 ? (to[0] ?? '') : `${to.slice(0, -1).join(', ')} ו${to[to.length - 1]}`
+}
+
 export const uiStrings: Record<Locale, UiStrings> = {
   en: {
-    homeHeading: 'Vietnam Travel Guides: Practical Tips, Step by Step',
+    homeHeading: (countries) => fitTitle(`${listEn(countries)} Travel Guides: Practical Tips, Step by Step`, 'Practical Travel Guides, Step by Step'),
+    homeDescription: (countries) =>
+      `Plan your trip to ${listEn(countries)} with practical, step-by-step travel guides: when to go, what to sort out before you fly, and more.`,
     siteTagline: 'Practical, step-by-step guides. No filters.',
-    chooseGuide: 'Choose a destination',
-    startGuide: 'Start the guide',
     readGuide: 'Read this guide',
-    stepsCount: (n) => `${n} steps`,
+    countryHubLink: (country) => `All ${country} guides`,
     stepLabel: (n) => `Step ${n}`,
     stepOf: (n, total) => `Step ${n} of ${total}`,
     prev: 'Previous',
@@ -80,12 +94,12 @@ export const uiStrings: Record<Locale, UiStrings> = {
     affiliateNoteLink: 'Read our affiliate disclosure',
   },
   he: {
-    homeHeading: 'מדריכי טיול לויאטנם: טיפים מעשיים, צעד אחר צעד',
-    siteTagline: 'מדריכים מעשיים, צעד אחר צעד, בלי פילטרים.',
-    chooseGuide: 'בחרו יעד',
-    startGuide: 'מתחילים במסלול',
+    homeHeading: (countries) => fitTitle(`מדריכי טיול ${listHeTo(countries)}: טיפים מעשיים, צעד אחר צעד`, 'מדריכי טיול מעשיים, צעד אחר צעד'),
+    homeDescription: (countries) =>
+      `מתכננים טיול ${listHeTo(countries)}? מדריכי טיול מעשיים, צעד אחר צעד: מתי לטוס, מה לסדר לפני הטיסה ועוד.`,
+    siteTagline: 'מדריכים מעשיים, צעד אחר צעד, בתכלס.',
     readGuide: 'למדריך המלא',
-    stepsCount: (n) => `${n} תחנות`,
+    countryHubLink: (country) => `כל המדריכים ל${country}`,
     stepLabel: (n) => `תחנה ${n}`,
     stepOf: (n, total) => `תחנה ${n} מתוך ${total}`,
     prev: 'הקודם',

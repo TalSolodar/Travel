@@ -32,32 +32,40 @@ src/
 
 Routes: `/` lists the guides, `/:guide` redirects to the guide's first step, and `/:guide/:step` shows a step.
 
-## Adding a new guide (e.g. Taiwan)
+## Adding a new country (e.g. Taiwan)
 
-1. Create `src/data/guides/en/taiwan.ts` (and `he/taiwan.ts` for Hebrew), with a `hub` block for its hub page:
+Nothing outside the data files needs to change. The home page, hub page, routes, sitemap, hreflang and the home page's title and description are all built from the registered guides.
+
+1. Create `src/data/guides/en/taiwan.ts` (and `he/taiwan.ts` for Hebrew; the two can have different content):
 
    ```ts
-   import { themes } from '../../lib/themes'
-   import type { Guide } from '../../types/guide'
+   import { themes } from '../../../lib/themes'
+   import type { Guide } from '../../../types/guide'
 
    export const taiwan: Guide = {
-     slug: 'taiwan',
-     country: 'Taiwan',
-     title: 'Taiwan',
-     tagline: '...',
-     description: '...',
-     coverImage: 'https://...',
+     slug: 'taiwan', // same slug in every language, so the pages link up as translations
+     country: 'Taiwan', // heading of the country's section on the home page
+     title: 'No Hassle, Taiwan!', // short name in the sidebar and mobile bar
+     tagline: 'The practical guide',
+     description: '...', // one line under the country heading on the home page; only mention published steps
+     hub: {
+       heading: 'Taiwan Travel Guide: ...', // H1 of /en/taiwan
+       intro: '...',
+       seo: { title: '...', description: '...' }, // max ~60 / ~155 characters
+     },
+     coverImage: '/images/taiwan.jpg',
      icon: 'mountain',
      theme: themes.crimson,
      steps: [
        {
-         id: 'taipei',
-         icon: 'city',
-         title: 'Taipei',
+         id: 'weather', // URL: /en/taiwan/weather; use the same id in Hebrew for the translation
+         icon: 'weather',
+         title: 'Weather & planning', // short name in menus
+         heading: 'Best Time to Visit Taiwan: ...', // the page H1
          subtitle: '...',
-         image: 'https://...',
+         seo: { title: '...', description: '...' },
+         image: '/images/taiwan-weather.jpg',
          blocks: [
-           { type: 'heading', text: '...' },
            { type: 'paragraph', lead: true, text: 'Text with **bold**' },
          ],
        },
@@ -65,9 +73,11 @@ Routes: `/` lists the guides, `/:guide` redirects to the guide's first step, and
    }
    ```
 
-2. Register it per language in `src/data/guides/index.ts`, e.g. `en: [vietnamEn, taiwanEn]`.
+2. Register it per language in `src/data/guides/index.ts`, e.g. `en: [vietnamEn, taiwanEn]`. The order there is the order on the home page.
+3. Optional: a region map needs its own GeoJSON in `src/data/geo/` (see [Maps](#maps)).
+4. Run `npm run build`. It fails with a clear message if a title or description is too long or duplicated, or a page doesn't have exactly one H1.
 
-The guide then shows up on the home page with its own color theme.
+A step with `display: false` stays hidden everywhere (home, hub, sitemap) until you're ready to publish it.
 
 ## Block types
 
