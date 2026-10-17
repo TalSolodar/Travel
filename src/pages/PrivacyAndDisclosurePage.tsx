@@ -2,8 +2,9 @@ import { StaticPageLayout } from '../components/layout/StaticPageLayout'
 import { useLocale } from '../i18n/context'
 
 // Privacy & transparency page, one version per language.
-// Keep "Third-party services" in sync with what the site actually loads: today OpenFreeMap map tiles
-// (map block) and Unsplash images (guide cover photos). Affiliate links (klook.tpx.li) load nothing until clicked.
+// Keep "Cookies" and "Third-party services" in sync with what the site actually loads: today the Travelpayouts
+// script (index.html), OpenFreeMap map tiles (map block) and Unsplash images (guide cover photos).
+// Affiliate links (klook.tpx.li) load nothing until clicked.
 export function PrivacyAndDisclosurePage() {
   const { locale } = useLocale()
 
@@ -32,13 +33,13 @@ export function PrivacyAndDisclosurePage() {
           Vercel, עשוי לתעד מידע טכני בסיסי כמו כתובת IP וסוג הדפדפן, לצורכי אבטחה וביצועים.
         </p>
         <p id="cookies">
-          <strong>עוגיות:</strong> האתר עצמו לא משתמש בעוגיות. כשלוחצים על קישור שותפים, האתר של השותף עשוי לשמור עוגייה
-          שמתעדת שהגעתם מאיתנו. מרגע שאתם באתר של שותף, חלה מדיניות הפרטיות שלו. אפשר לחסום או למחוק עוגיות בהגדרות
-          הדפדפן.
+          <strong>עוגיות:</strong> האתר טוען סקריפט של Travelpayouts, שעשוי לשמור עוגיות כדי לזהות הזמנות שבוצעו דרך
+          קישורי השותפים. כשלוחצים על קישור שותפים, גם האתר של השותף עשוי לשמור עוגייה. אפשר לחסום או למחוק עוגיות
+          בהגדרות הדפדפן.
         </p>
         <p>
-          <strong>שירותי צד שלישי:</strong> עמוד מזג האוויר טוען מפה מ-OpenFreeMap, וחלק מהעמודים טוענים תמונות
-          מ-Unsplash. השירותים האלה עשויים לקבל את כתובת ה-IP שלכם
+          <strong>שירותי צד שלישי:</strong> כל עמוד טוען סקריפט של Travelpayouts. עמוד מזג האוויר טוען מפה
+          מ-OpenFreeMap, וחלק מהעמודים טוענים תמונות מ-Unsplash. השירותים האלה עשויים לקבל את כתובת ה-IP שלכם
           כשהם נטענים.
         </p>
         <p>
@@ -79,13 +80,13 @@ export function PrivacyAndDisclosurePage() {
         performance.
       </p>
       <p id="cookies">
-        <strong>Cookies:</strong> This site doesn't use cookies itself. When you click an affiliate link, the partner's
-        site may set a cookie to record that you came from us. Once you're on a partner's site, their privacy policy
-        applies. You can block or delete cookies in your browser settings.
+        <strong>Cookies:</strong> The site loads a Travelpayouts script that may set cookies to recognise bookings made
+        through affiliate links. When you click an affiliate link, the partner's site may also set a cookie. You can
+        block or delete cookies in your browser settings.
       </p>
       <p>
-        <strong>Third-party services:</strong> The weather page loads a map from OpenFreeMap, and some pages load images
-        from Unsplash. These services may receive
+        <strong>Third-party services:</strong> Every page loads a script from Travelpayouts. The weather page loads a map
+        from OpenFreeMap, and some pages load images from Unsplash. These services may receive
         your IP address when they load.
       </p>
       <p>
