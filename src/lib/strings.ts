@@ -91,7 +91,7 @@ export const uiStrings: Record<Locale, UiStrings> = {
     footerLinks: { home: 'Home', privacyAndDisclosure: 'Privacy & transparency' },
     affiliateNote:
       'Some links on this page are affiliate links. If you book through them, we may earn a small commission at no extra cost to you.',
-    affiliateNoteLink: 'How this site is funded',
+    affiliateNoteLink: 'Privacy & transparency',
   },
   he: {
     homeHeading: (countries) => fitTitle(`מדריכי טיול ${listHeTo(countries)}: טיפים מעשיים, צעד אחר צעד`, 'מדריכי טיול מעשיים, צעד אחר צעד'),
@@ -128,6 +128,6 @@ export const uiStrings: Record<Locale, UiStrings> = {
     footerLinks: { home: 'דף הבית', privacyAndDisclosure: 'פרטיות ושקיפות' },
     affiliateNote:
       'חלק מהקישורים בעמוד הם קישורי שותפים. אם תזמינו דרכם, ייתכן שנקבל עמלה קטנה, בלי שום עלות נוספת עבורכם.',
-    affiliateNoteLink: 'איך האתר מתממן',
+    affiliateNoteLink: 'פרטיות ושקיפות',
   },
 }
