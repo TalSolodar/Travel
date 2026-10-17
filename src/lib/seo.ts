@@ -35,16 +35,16 @@ const staticMeta: Record<Locale, Record<StaticPath, BaseMeta>> = {
       image: '/images/vietnam.jpg',
     },
     '/about': {
-      title: `About ${SITE_NAME}: Who We Are`,
-      description: `Who is behind ${SITE_NAME}, how we research our step-by-step travel guides, and how the site is funded through affiliate links.`,
+      title: `About ${SITE_NAME.en}: Who We Are`,
+      description: `Who is behind ${SITE_NAME.en}, how we research our step-by-step travel guides, and how the site is funded through affiliate links.`,
     },
     '/privacy': {
-      title: `Privacy Policy | ${SITE_NAME}`,
-      description: `How ${SITE_NAME} handles your data: what we collect, how cookies and affiliate partners are used, and how to contact us.`,
+      title: `Privacy Policy | ${SITE_NAME.en}`,
+      description: `How ${SITE_NAME.en} handles your data: what we collect, how cookies and affiliate partners are used, and how to contact us.`,
     },
     '/affiliate-disclosure': {
-      title: `Affiliate Disclosure | ${SITE_NAME}`,
-      description: `Some links on ${SITE_NAME} are affiliate links. Learn how they work, which partners we use, and why they never cost you extra.`,
+      title: `Affiliate Disclosure | ${SITE_NAME.en}`,
+      description: `Some links on ${SITE_NAME.en} are affiliate links. Learn how they work, which partners we use, and why they never cost you extra.`,
     },
   },
   he: {
@@ -55,16 +55,16 @@ const staticMeta: Record<Locale, Record<StaticPath, BaseMeta>> = {
       image: '/images/vietnam.jpg',
     },
     '/about': {
-      title: `אודות ${SITE_NAME}: מי אנחנו`,
-      description: `מי עומד מאחורי ${SITE_NAME}, איך אנחנו בונים את מדריכי הטיול צעד אחר צעד, ואיך האתר ממומן באמצעות קישורי שותפים.`,
+      title: `אודות ״${SITE_NAME.he}״: מי אנחנו`,
+      description: `מי עומד מאחורי ״${SITE_NAME.he}״, איך אנחנו בונים את מדריכי הטיול צעד אחר צעד, ואיך האתר ממומן באמצעות קישורי שותפים.`,
     },
     '/privacy': {
-      title: `מדיניות פרטיות | ${SITE_NAME}`,
-      description: `איך ${SITE_NAME} מטפל במידע שלכם: מה נאסף, איך משתמשים בעוגיות ובשותפים עסקיים, ואיך יוצרים איתנו קשר.`,
+      title: `מדיניות פרטיות | ${SITE_NAME.he}`,
+      description: `איך ״${SITE_NAME.he}״ מטפל במידע שלכם: מה נאסף, איך משתמשים בעוגיות ובשותפים עסקיים, ואיך יוצרים איתנו קשר.`,
     },
     '/affiliate-disclosure': {
-      title: `גילוי נאות: קישורי שותפים | ${SITE_NAME}`,
-      description: `חלק מהקישורים ב-${SITE_NAME} הם קישורי שותפים. כאן מוסבר איך הם עובדים, עם מי אנחנו עובדים, ולמה הם אף פעם לא עולים לכם יותר.`,
+      title: `גילוי נאות: קישורי שותפים | ${SITE_NAME.he}`,
+      description: `חלק מהקישורים ב״${SITE_NAME.he}״ הם קישורי שותפים. כאן מוסבר איך הם עובדים, עם מי אנחנו עובדים, ולמה הם אף פעם לא עולים לכם יותר.`,
     },
   },
 }
@@ -72,7 +72,7 @@ const staticMeta: Record<Locale, Record<StaticPath, BaseMeta>> = {
 export const notFoundMeta: PageMeta = {
   path: '/404',
   locale: defaultLocale,
-  title: `Page Not Found | ${SITE_NAME}`,
+  title: `Page Not Found | ${SITE_NAME.en}`,
   description: "The page you were looking for doesn't exist. Head back to the home page to find our travel guides.",
   noindex: true,
 }
@@ -136,7 +136,7 @@ function headEntries(meta: PageMeta): HeadTag[] {
     { tag: 'meta', attrs: { property: 'og:title', content: meta.title } },
     { tag: 'meta', attrs: { property: 'og:description', content: meta.description } },
     { tag: 'meta', attrs: { property: 'og:type', content: meta.type ?? 'website' } },
-    { tag: 'meta', attrs: { property: 'og:site_name', content: SITE_NAME } },
+    { tag: 'meta', attrs: { property: 'og:site_name', content: SITE_NAME[meta.locale] } },
     { tag: 'meta', attrs: { property: 'og:locale', content: ogLocale[meta.locale] } },
   ]
   if (meta.noindex) {

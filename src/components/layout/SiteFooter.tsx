@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom'
-import { SITE_NAME } from '../../config/site'
 import { useLocale } from '../../i18n/context'
 
 export function SiteFooter({ className = '' }: { className?: string }) {
-  const { strings, href } = useLocale()
+  const { strings, href, siteName } = useLocale()
   const links = [
     { to: href('/'), label: strings.footerLinks.home },
     { to: href('/about'), label: strings.footerLinks.about },
@@ -20,7 +19,7 @@ export function SiteFooter({ className = '' }: { className?: string }) {
         ))}
       </nav>
       <p>
-        © {new Date().getFullYear()} {SITE_NAME}
+        © {new Date().getFullYear()} {siteName}
       </p>
     </footer>
   )

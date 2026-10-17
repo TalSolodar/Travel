@@ -1,18 +1,18 @@
 import { Link } from 'react-router-dom'
 import { StaticPageLayout } from '../components/layout/StaticPageLayout'
-import { CONTACT_EMAIL, SITE_NAME } from '../config/site'
+import { CONTACT_EMAIL } from '../config/site'
 import { useLocale } from '../i18n/context'
 
 // Placeholder copy, one version per language: edit freely.
 export function AboutPage() {
-  const { locale, href } = useLocale()
+  const { locale, href, siteName } = useLocale()
   const email = <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
 
   if (locale === 'he') {
     return (
-      <StaticPageLayout title={`אודות ${SITE_NAME}`}>
+      <StaticPageLayout title={`אודות ״${siteName}״`}>
         <p>
-          {SITE_NAME} מפרסם מדריכי טיול מעשיים, צעד אחר צעד. אנחנו מתמקדים בשאלות שבאמת עולות כשמתכננים טיול: מתי
+          ״{siteName}״ מפרסם מדריכי טיול מעשיים, צעד אחר צעד. אנחנו מתמקדים בשאלות שבאמת עולות כשמתכננים טיול: מתי
           לטוס, מה לסדר לפני הטיסה, איך להתנייד ואיפה לישון.
         </p>
         <h2>איך אנחנו כותבים את המדריכים</h2>
@@ -32,9 +32,9 @@ export function AboutPage() {
   }
 
   return (
-    <StaticPageLayout title={`About ${SITE_NAME}`}>
+    <StaticPageLayout title={`About ${siteName}`}>
       <p>
-        {SITE_NAME} publishes practical, step-by-step travel guides. We focus on the questions that actually come up
+        {siteName} publishes practical, step-by-step travel guides. We focus on the questions that actually come up
         when planning a trip: when to go, what to sort out before you fly, how to get around and where to stay.
       </p>
       <h2>How we write our guides</h2>

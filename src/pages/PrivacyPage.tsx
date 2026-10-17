@@ -1,17 +1,17 @@
 import { Link } from 'react-router-dom'
 import { StaticPageLayout } from '../components/layout/StaticPageLayout'
-import { CONTACT_EMAIL, SITE_NAME } from '../config/site'
+import { CONTACT_EMAIL } from '../config/site'
 import { useLocale } from '../i18n/context'
 
 // Placeholder copy, one version per language: review it (ideally with a professional) before relying on it.
 export function PrivacyPage() {
-  const { locale, href } = useLocale()
+  const { locale, href, siteName } = useLocale()
   const email = <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
 
   if (locale === 'he') {
     return (
       <StaticPageLayout title="מדיניות פרטיות" intro="עודכן לאחרונה: אוקטובר 2026">
-        <p>המדיניות הזו מסבירה איזה מידע {SITE_NAME} אוסף כשאתם גולשים באתר, ואיך משתמשים בו.</p>
+        <p>המדיניות הזו מסבירה איזה מידע ״{siteName}״ אוסף כשאתם גולשים באתר, ואיך משתמשים בו.</p>
         <h2>מידע שאנחנו אוספים</h2>
         <p>
           אנחנו לא מבקשים לפתוח חשבון או למסור פרטים אישיים. כמו ברוב האתרים, ספק האחסון שלנו עשוי לתעד מידע טכני בסיסי
@@ -43,7 +43,7 @@ export function PrivacyPage() {
 
   return (
     <StaticPageLayout title="Privacy Policy" intro="Last updated: October 2026">
-      <p>This policy explains what information {SITE_NAME} collects when you visit the site, and how it is used.</p>
+      <p>This policy explains what information {siteName} collects when you visit the site, and how it is used.</p>
       <h2>Information we collect</h2>
       <p>
         We don't ask you to create an account or submit personal details. Like most websites, our hosting provider

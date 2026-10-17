@@ -3,14 +3,13 @@ import { SiteFooter } from '../components/layout/SiteFooter'
 import { SiteHeader } from '../components/layout/SiteHeader'
 import { Icon } from '../components/ui/Icon'
 import { SmartImage } from '../components/ui/SmartImage'
-import { SITE_NAME } from '../config/site'
 import { getGuides } from '../data/guides'
 import { useLocale } from '../i18n/context'
 import { themeStyle } from '../lib/themes'
 import type { Guide } from '../types/guide'
 
 export function HomePage() {
-  const { locale, strings } = useLocale()
+  const { locale, strings, siteName } = useLocale()
 
   return (
     <div className="min-h-dvh bg-slate-50">
@@ -19,7 +18,7 @@ export function HomePage() {
         <div className="mx-auto max-w-5xl">
           <p className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-sm font-medium">
             <Icon name="compass" size={16} />
-            {SITE_NAME}
+            {siteName}
           </p>
           <h1 className="max-w-2xl text-4xl leading-tight font-extrabold md:text-5xl">{strings.homeHeading}</h1>
           <p className="mt-3 max-w-xl text-lg text-white/85">{strings.siteTagline}</p>

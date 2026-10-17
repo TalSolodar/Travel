@@ -31,7 +31,7 @@ export function TimelineBlock({ block }: { block: TimelineBlockData }) {
       <div ref={timelineRef} className="scroll-mt-24 rounded-3xl border border-brand-100 bg-brand-50/70 p-5 md:p-8 lg:scroll-mt-8">
         {(block.title || block.description) && (
           <div className="mb-6 md:mb-8 md:text-center">
-            {block.title && <h2 className="text-2xl font-extrabold text-slate-900 md:text-3xl">{block.title}</h2>}
+            {block.title && <h2 className="text-2xl font-extrabold text-slate-900 md:text-3xl">{block.title}</h2>}{' '}
             {block.description && (
               <p className="mt-1 text-sm text-slate-600 md:text-base">
                 <RichText text={block.description} />
@@ -74,6 +74,9 @@ export function TimelineBlock({ block }: { block: TimelineBlockData }) {
 }
 
 function TimelineStop({ task, index, onSelect }: { task: TimelineTask; index: number; onSelect: () => void }) {
+  const strings = useStrings()
+  // The badge number is drawn with CSS (data-step), so the HTML text reads "Step 1: 6-8 weeks before Vaccines ..."
+  // instead of running the number into the time label ("16-8 weeks").
   return (
     <button
       type="button"
@@ -82,17 +85,19 @@ function TimelineStop({ task, index, onSelect }: { task: TimelineTask; index: nu
     >
       <span className="relative z-10 flex size-16 shrink-0 items-center justify-center rounded-2xl border border-brand-100 bg-white text-brand-600 shadow-sm transition group-hover:-translate-y-0.5 group-hover:border-brand-300 group-hover:shadow-md">
         <Icon name={task.icon} size={28} />
-        <span className="absolute -end-2 -top-2 flex size-6 items-center justify-center rounded-full bg-brand-600 text-xs font-bold text-white ring-2 ring-white">
-          {index + 1}
-        </span>
-      </span>
-
+        <span
+          aria-hidden="true"
+          data-step={index + 1}
+          className="absolute -end-2 -top-2 flex size-6 items-center justify-center rounded-full bg-brand-600 text-xs font-bold text-white ring-2 ring-white after:content-[attr(data-step)]"
+        />
+      </span>{' '}
       <span className="flex min-w-0 flex-col md:items-center">
-        <span className="text-xs font-bold tracking-wide text-brand-700 uppercase">{task.when}</span>
-        <span className="font-bold text-slate-900 underline-offset-4 group-hover:underline">{task.title}</span>
+        <span className="sr-only">{strings.stepLabel(index + 1)}: </span>
+        <span className="text-xs font-bold tracking-wide text-brand-700 uppercase">{task.when}</span>{' '}
+        <span className="font-bold text-slate-900 underline-offset-4 group-hover:underline">{task.title}</span>{' '}
         <span className="mt-0.5 text-sm leading-snug text-slate-600">
           <RichText text={task.summary} />
-        </span>
+        </span>{' '}
         {task.note && (
           <span className="mt-2 w-fit rounded-full bg-white px-2.5 py-0.5 text-xs font-medium text-slate-600 ring-1 ring-slate-200">
             {task.note}
@@ -125,12 +130,13 @@ function TaskSection({ task, index, flash, onBack }: TaskSectionProps) {
           <div className="mb-1 flex flex-wrap items-center gap-2">
             <span className="rounded-full bg-brand-600 px-2 py-0.5 text-[11px] font-bold text-white">
               {strings.stepLabel(index + 1)}
-            </span>
+            </span>{' '}
             <span className="inline-flex items-center gap-1 text-xs font-semibold text-brand-700">
+              <span className="sr-only">· </span>
               <Icon name="calendar" size={13} />
               {task.when}
             </span>
-          </div>
+          </div>{' '}
           <h3 tabIndex={-1} className="text-xl font-extrabold text-slate-900 outline-none md:text-2xl">
             {task.title}
           </h3>
@@ -150,7 +156,7 @@ function TaskSection({ task, index, flash, onBack }: TaskSectionProps) {
           <Icon name="arrowUp" size={16} />
           {strings.backToTimeline}
         </button>
-      </footer>
+      </footer>{' '}
     </section>
   )
 }

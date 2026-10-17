@@ -1,18 +1,18 @@
 import { Link } from 'react-router-dom'
 import { StaticPageLayout } from '../components/layout/StaticPageLayout'
-import { CONTACT_EMAIL, SITE_NAME } from '../config/site'
+import { CONTACT_EMAIL } from '../config/site'
 import { useLocale } from '../i18n/context'
 
 // Placeholder copy, one version per language: edit freely.
 export function AffiliateDisclosurePage() {
-  const { locale, href } = useLocale()
+  const { locale, href, siteName } = useLocale()
   const email = <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
 
   if (locale === 'he') {
     return (
       <StaticPageLayout title="גילוי נאות: קישורי שותפים" intro="עודכן לאחרונה: אוקטובר 2026">
         <p>
-          {SITE_NAME} נתמך על ידי הקוראים. חלק מהקישורים באתר הם <strong>קישורי שותפים</strong>: אם תלחצו על אחד מהם
+          ״{siteName}״ נתמך על ידי הקוראים. חלק מהקישורים באתר הם <strong>קישורי שותפים</strong>: אם תלחצו על אחד מהם
           ותבצעו הזמנה או רכישה, ייתכן שנקבל עמלה קטנה.
         </p>
         <h2>זה אף פעם לא עולה לכם יותר</h2>
@@ -34,7 +34,7 @@ export function AffiliateDisclosurePage() {
   return (
     <StaticPageLayout title="Affiliate Disclosure" intro="Last updated: October 2026">
       <p>
-        {SITE_NAME} is reader-supported. Some links on this site are <strong>affiliate links</strong>: if you click one
+        {siteName} is reader-supported. Some links on this site are <strong>affiliate links</strong>: if you click one
         and make a booking or purchase, we may earn a small commission.
       </p>
       <h2>It never costs you extra</h2>
